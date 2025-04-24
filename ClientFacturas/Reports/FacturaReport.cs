@@ -29,10 +29,10 @@ namespace ClientFacturas.Reports
                 ReportParameter identificacionParameter = new ReportParameter("Identificacion", _facturaVisual.Cabecera.Identificacion);
                 ReportParameter telefonoParameter = new ReportParameter("Telefono", _facturaVisual.Cabecera.Telefono);
                 ReportParameter emailParameter = new ReportParameter("Email", _facturaVisual.Cabecera.Email);
-                ReportParameter fechaParameter = new ReportParameter("Fecha", _facturaVisual.Cabecera.FechaCreacion.ToString("dd/MM/yyyy"));
+                ReportParameter fechaParameter = new ReportParameter("Fecha", _facturaVisual.Cabecera.FechaCreacion.GetValueOrDefault().ToString("dd/MM/yyyy"));
                 ReportParameter subtotalParameter = new ReportParameter("SubTotal", _facturaVisual.Cabecera.SubTotal.ToString("0.00"));
-                ReportParameter totalParameter = new ReportParameter("Total", _facturaVisual.Cabecera.Total.ToString("0.00"));
-                ReportParameter ivaParameter = new ReportParameter("Iva", _facturaVisual.Cabecera.Iva.ToString("0.00"));
+                ReportParameter totalParameter = new ReportParameter("Total", _facturaVisual.Cabecera.Total.GetValueOrDefault().ToString("0.00"));
+                ReportParameter ivaParameter = new ReportParameter("Iva", _facturaVisual.Cabecera.Iva.GetValueOrDefault().ToString("0.00"));
 
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { nombreClienteParameter, identificacionParameter, telefonoParameter, emailParameter, fechaParameter, subtotalParameter, totalParameter, ivaParameter });
                 this.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);

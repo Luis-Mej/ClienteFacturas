@@ -230,7 +230,6 @@ namespace ClientFacturas
             Carrito carritoForm = new Carrito(detallesSeleccionados);
             carritoForm.ShowDialog();
         }
-
         private void txtBuscarProducto_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtBuscarProducto.Text.ToLower().Trim();
@@ -240,15 +239,10 @@ namespace ClientFacturas
             dgvProductos.DataSource = productosFiltrados;
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void btnCerrar_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea cerrar la sesión?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                Login login = new Login();
-                login.FormClosed += (s, args) => this.Close();
-                this.Hide();
-                login.Show();
-            }
+
         }
+
     }
 }

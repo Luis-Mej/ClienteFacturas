@@ -95,9 +95,9 @@ namespace ClientFacturas
                 MessageBox.Show("Login exitoso");
                 this.Hide();
 
-                Producto producto = new Producto();
-                producto.FormClosed += (s, args) => this.Close();
-                producto.Show();
+                MenuPrincipal menuPrincipal = new MenuPrincipal();
+                menuPrincipal.FormClosed += (s, args) => this.Close();
+                menuPrincipal.Show();
             }
             else
             {

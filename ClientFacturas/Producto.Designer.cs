@@ -31,145 +31,141 @@ namespace ClientFacturas
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            btnEliminar = new Button();
-            btnEditar = new Button();
-            btnAgregar = new Button();
-            panel2 = new Panel();
-            txtBuscarProducto = new TextBox();
-            btnCarrito = new Button();
-            panel3 = new Panel();
-            dgvProductos = new DataGridView();
-            btnCerrar = new Button();
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
-            SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtBuscarProducto = new System.Windows.Forms.TextBox();
+            this.btnCarrito = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            this.SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnCerrar);
-            panel1.Controls.Add(btnEliminar);
-            panel1.Controls.Add(btnEditar);
-            panel1.Controls.Add(btnAgregar);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 396);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(672, 37);
-            panel1.TabIndex = 0;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Dock = DockStyle.Right;
-            btnEliminar.Location = new Point(437, 0);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(75, 37);
-            btnEliminar.TabIndex = 2;
-            btnEliminar.Text = "Eliminar P.";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += btnEliminar_Click;
-            // 
-            // btnEditar
-            // 
-            btnEditar.Dock = DockStyle.Right;
-            btnEditar.Location = new Point(512, 0);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(85, 37);
-            btnEditar.TabIndex = 1;
-            btnEditar.Text = "Actualizar P.";
-            btnEditar.UseVisualStyleBackColor = true;
-            btnEditar.Click += btnEditar_Click;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.Dock = DockStyle.Right;
-            btnAgregar.Location = new Point(597, 0);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(75, 37);
-            btnAgregar.TabIndex = 0;
-            btnAgregar.Text = "Agregar P.";
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(txtBuscarProducto);
-            panel2.Controls.Add(btnCarrito);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(672, 25);
-            panel2.TabIndex = 1;
-            // 
-            // txtBuscarProducto
-            // 
-            txtBuscarProducto.Dock = DockStyle.Left;
-            txtBuscarProducto.Location = new Point(0, 0);
-            txtBuscarProducto.Multiline = true;
-            txtBuscarProducto.Name = "txtBuscarProducto";
-            txtBuscarProducto.Size = new Size(522, 25);
-            txtBuscarProducto.TabIndex = 1;
-            txtBuscarProducto.TextChanged += txtBuscarProducto_TextChanged;
-            // 
-            // btnCarrito
-            // 
-            btnCarrito.Dock = DockStyle.Right;
-            btnCarrito.Location = new Point(561, 0);
-            btnCarrito.Name = "btnCarrito";
-            btnCarrito.Size = new Size(111, 25);
-            btnCarrito.TabIndex = 0;
-            btnCarrito.Text = "Agregar al carrito";
-            btnCarrito.TextAlign = ContentAlignment.MiddleRight;
-            btnCarrito.UseVisualStyleBackColor = true;
-            btnCarrito.Click += btnCarrito_Click;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(dgvProductos);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 25);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(672, 371);
-            panel3.TabIndex = 2;
-            // 
-            // dgvProductos
-            // 
-            dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProductos.Dock = DockStyle.Fill;
-            dgvProductos.Location = new Point(0, 0);
-            dgvProductos.Name = "dgvProductos";
-            dgvProductos.Size = new Size(672, 371);
-            dgvProductos.TabIndex = 0;
+            this.panel1.Controls.Add(this.btnCerrar);
+            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.btnEditar);
+            this.panel1.Controls.Add(this.btnAgregar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 343);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(576, 32);
+            this.panel1.TabIndex = 0;
             // 
             // btnCerrar
             // 
-            btnCerrar.Dock = DockStyle.Left;
-            btnCerrar.Location = new Point(0, 0);
-            btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(92, 37);
-            btnCerrar.TabIndex = 3;
-            btnCerrar.Text = "Cerrar Sesión";
-            btnCerrar.UseVisualStyleBackColor = true;
-            btnCerrar.Click += btnCerrar_Click;
+            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCerrar.Location = new System.Drawing.Point(0, 0);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(100, 32);
+            this.btnCerrar.TabIndex = 3;
+            this.btnCerrar.Text = "Volver al Menú";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click_1);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnEliminar.Location = new System.Drawing.Point(361, 0);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(64, 32);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Eliminar P.";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnEditar.Location = new System.Drawing.Point(425, 0);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(77, 32);
+            this.btnEditar.TabIndex = 1;
+            this.btnEditar.Text = "Actualizar P.";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAgregar.Location = new System.Drawing.Point(502, 0);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(74, 32);
+            this.btnAgregar.TabIndex = 0;
+            this.btnAgregar.Text = "Agregar P.";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtBuscarProducto);
+            this.panel2.Controls.Add(this.btnCarrito);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(576, 22);
+            this.panel2.TabIndex = 1;
+            // 
+            // txtBuscarProducto
+            // 
+            this.txtBuscarProducto.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtBuscarProducto.Location = new System.Drawing.Point(0, 0);
+            this.txtBuscarProducto.Name = "txtBuscarProducto";
+            this.txtBuscarProducto.Size = new System.Drawing.Size(448, 20);
+            this.txtBuscarProducto.TabIndex = 1;
+            this.txtBuscarProducto.TextChanged += new System.EventHandler(this.txtBuscarProducto_TextChanged);
+            // 
+            // btnCarrito
+            // 
+            this.btnCarrito.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCarrito.Location = new System.Drawing.Point(481, 0);
+            this.btnCarrito.Name = "btnCarrito";
+            this.btnCarrito.Size = new System.Drawing.Size(95, 22);
+            this.btnCarrito.TabIndex = 0;
+            this.btnCarrito.Text = "Agregar al carrito";
+            this.btnCarrito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCarrito.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dgvProductos);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 22);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(576, 321);
+            this.panel3.TabIndex = 2;
+            // 
+            // dgvProductos
+            // 
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvProductos.Location = new System.Drawing.Point(0, 0);
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.Size = new System.Drawing.Size(576, 321);
+            this.dgvProductos.TabIndex = 0;
             // 
             // Producto
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(672, 433);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
-            Name = "Producto";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Producto";
-            panel1.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(576, 375);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Name = "Producto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Producto";
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
