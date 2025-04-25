@@ -1,6 +1,6 @@
 ﻿namespace ClientFacturas
 {
-    partial class Compras
+    partial class VerFacturas
     {
         /// <summary>
         /// Required designer variable.
@@ -31,23 +31,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnVolver = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dgvProductosComprar = new System.Windows.Forms.DataGridView();
-            this.btnCarrito = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductosComprar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 414);
+            this.panel1.Location = new System.Drawing.Point(0, 430);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 36);
+            this.panel1.Size = new System.Drawing.Size(544, 35);
             this.panel1.TabIndex = 0;
             // 
             // btnVolver
@@ -55,72 +52,50 @@
             this.btnVolver.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnVolver.Location = new System.Drawing.Point(0, 0);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(92, 36);
+            this.btnVolver.Size = new System.Drawing.Size(100, 35);
             this.btnVolver.TabIndex = 0;
             this.btnVolver.Text = "Volver al Menú";
             this.btnVolver.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnCarrito);
-            this.panel2.Controls.Add(this.txtBuscar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 27);
+            this.panel2.Size = new System.Drawing.Size(544, 35);
             this.panel2.TabIndex = 1;
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(3, 4);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(619, 20);
-            this.txtBuscar.TabIndex = 0;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dgvProductosComprar);
+            this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 27);
+            this.panel3.Location = new System.Drawing.Point(0, 35);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(800, 387);
+            this.panel3.Size = new System.Drawing.Size(544, 395);
             this.panel3.TabIndex = 2;
             // 
-            // dgvProductosComprar
+            // dataGridView1
             // 
-            this.dgvProductosComprar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductosComprar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProductosComprar.Location = new System.Drawing.Point(0, 0);
-            this.dgvProductosComprar.Name = "dgvProductosComprar";
-            this.dgvProductosComprar.Size = new System.Drawing.Size(800, 387);
-            this.dgvProductosComprar.TabIndex = 0;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(544, 395);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // btnCarrito
-            // 
-            this.btnCarrito.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCarrito.Location = new System.Drawing.Point(694, 0);
-            this.btnCarrito.Name = "btnCarrito";
-            this.btnCarrito.Size = new System.Drawing.Size(106, 27);
-            this.btnCarrito.TabIndex = 1;
-            this.btnCarrito.Text = "Agregar al Carrito";
-            this.btnCarrito.UseVisualStyleBackColor = true;
-            // 
-            // Compras
+            // VerFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(544, 465);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Compras";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Compras";
+            this.Name = "VerFacturas";
+            this.Text = "Ver Facturas";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductosComprar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -128,11 +103,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.DataGridView dgvProductosComprar;
-        private System.Windows.Forms.Button btnCarrito;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

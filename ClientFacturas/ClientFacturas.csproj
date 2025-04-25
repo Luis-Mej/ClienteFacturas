@@ -158,6 +158,12 @@
       <DependentUpon>FacturaReport.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="VerFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerFacturas.Designer.cs">
+      <DependentUpon>VerFacturas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Carrito.resx">
       <DependentUpon>Carrito.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +203,9 @@
     <EmbeddedResource Include="Reports\FacturaReport.rdlc" />
     <EmbeddedResource Include="Reports\FacturaReport.resx">
       <DependentUpon>FacturaReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerFacturas.resx">
+      <DependentUpon>VerFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Dtos.FacturasDTOS.FacturaCabDTO.datasource" />

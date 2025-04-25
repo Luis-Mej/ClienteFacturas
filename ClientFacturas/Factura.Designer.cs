@@ -76,10 +76,11 @@ namespace ClientFacturas
             this.btnVolver.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnVolver.Location = new System.Drawing.Point(0, 0);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(84, 23);
+            this.btnVolver.Size = new System.Drawing.Size(109, 23);
             this.btnVolver.TabIndex = 2;
             this.btnVolver.Text = "Volver al Carrito";
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnCancelar
             // 
@@ -90,6 +91,7 @@ namespace ClientFacturas
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -288,7 +290,7 @@ namespace ClientFacturas
             this.Name = "Factura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Factura";
-            this.Load += new System.EventHandler(this.Factura_Load_1);
+            this.Load += new System.EventHandler(this.Factura_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

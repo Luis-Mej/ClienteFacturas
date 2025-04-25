@@ -33,8 +33,8 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContrasenaNueva = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnVolver = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,30 +75,30 @@
             this.panel1.Controls.Add(this.btnActualizar);
             this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 233);
+            this.panel1.Location = new System.Drawing.Point(0, 244);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(327, 48);
+            this.panel1.Size = new System.Drawing.Size(327, 37);
             this.panel1.TabIndex = 4;
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnVolver.Location = new System.Drawing.Point(0, 0);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(75, 48);
-            this.btnVolver.TabIndex = 0;
-            this.btnVolver.Text = "Volver al Menú";
-            this.btnVolver.UseVisualStyleBackColor = true;
             // 
             // btnActualizar
             // 
             this.btnActualizar.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnActualizar.Location = new System.Drawing.Point(252, 0);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 48);
+            this.btnActualizar.Size = new System.Drawing.Size(75, 37);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnVolver.Location = new System.Drawing.Point(0, 0);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(75, 37);
+            this.btnVolver.TabIndex = 0;
+            this.btnVolver.Text = "Volver al Menú";
+            this.btnVolver.UseVisualStyleBackColor = true;
             // 
             // EditUsuario
             // 
@@ -111,7 +111,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "EditUsuario";
-            this.Text = "EditUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Editar Usuario";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -38,12 +38,26 @@ namespace ClientFacturas
 
         private void btnUsuario_Click(object sender, EventArgs e)
         {
-
+            EditUsuario usuario = new EditUsuario();
+            usuario.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            usuario.Show();
         }
 
         private void btnFacturasCab_Click(object sender, EventArgs e)
         {
+            VerFacturas verFacturas = new VerFacturas();
+            verFacturas.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            verFacturas.Show();
+        }
 
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            Compras compras = new Compras();
+            compras.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            compras.Show();
         }
     }
 }

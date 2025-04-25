@@ -22,7 +22,6 @@ namespace ClientFacturas
         }
 
 
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Desea cancelar el registro del usuario", "Cancelar", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -32,7 +31,7 @@ namespace ClientFacturas
             return;
         }
 
-        private async void btnGuardar_Click(object sender, EventArgs e)
+        private async Task btnGuardar_Click(object sender, EventArgs e)
         {
             btnGuardar.Enabled = false;
 

@@ -33,6 +33,31 @@ namespace ClientFacturas
             await CargarProductosDelCarrito();
         }
 
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(txtCliente.Text) && !txtCliente.Text.All(char.IsLetter))
+            {
+                MessageBox.Show("El campo Cliente es obligatorio y debe contener solo letras.");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtIdentificacion.Text) && !txtIdentificacion.Text.All(char.IsDigit) && txtIdentificacion.Text.Length == 10)
+            {
+                MessageBox.Show("El campo Identificación no es válido.");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtTelefono.Text) && !txtTelefono.Text.All(char.IsDigit) && txtTelefono.Text.Length == 10)
+            {
+                MessageBox.Show("El campo teléfono no es válido");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmail.Text) && !txtEmail.Text.Contains("@") && !txtEmail.Text.EndsWith(".com"))
+            {
+                MessageBox.Show("El campo Email no es válido.");
+                return false;
+            }
+            return true;
+        }
+
         private async Task CargarProductosDelCarrito()
         {
             dgvDetalles.Columns.Clear();
@@ -102,23 +127,13 @@ namespace ClientFacturas
             txtTotal.Text = totalGeneral.ToString("0.00");
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("¿Desea cancelar la compra?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
-            }
-        }
-
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampos())
+            {
+                return;
+            }
+
             if (SesionActual.IdUsuario == null)
             {
                 MessageBox.Show("Error: Usuario inválido");
@@ -170,9 +185,19 @@ namespace ClientFacturas
             }
         }
 
-        private void Factura_Load_1(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("¿Desea cancelar la compra?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
+        }
 
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

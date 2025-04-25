@@ -32,7 +32,7 @@ namespace ClientFacturas
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@ namespace ClientFacturas
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnCerrar);
+            this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.btnAgregar);
@@ -59,16 +59,15 @@ namespace ClientFacturas
             this.panel1.Size = new System.Drawing.Size(576, 32);
             this.panel1.TabIndex = 0;
             // 
-            // btnCerrar
+            // btnVolver
             // 
-            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCerrar.Location = new System.Drawing.Point(0, 0);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(100, 32);
-            this.btnCerrar.TabIndex = 3;
-            this.btnCerrar.Text = "Volver al Menú";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click_1);
+            this.btnVolver.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnVolver.Location = new System.Drawing.Point(0, 0);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(100, 32);
+            this.btnVolver.TabIndex = 3;
+            this.btnVolver.Text = "Volver al Menú";
+            this.btnVolver.UseVisualStyleBackColor = true;
             // 
             // btnEliminar
             // 
@@ -79,6 +78,7 @@ namespace ClientFacturas
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar P.";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -89,6 +89,7 @@ namespace ClientFacturas
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "Actualizar P.";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAgregar
             // 
@@ -107,7 +108,7 @@ namespace ClientFacturas
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(576, 22);
+            this.panel2.Size = new System.Drawing.Size(576, 25);
             this.panel2.TabIndex = 1;
             // 
             // txtBuscarProducto
@@ -124,19 +125,20 @@ namespace ClientFacturas
             this.btnCarrito.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnCarrito.Location = new System.Drawing.Point(481, 0);
             this.btnCarrito.Name = "btnCarrito";
-            this.btnCarrito.Size = new System.Drawing.Size(95, 22);
+            this.btnCarrito.Size = new System.Drawing.Size(95, 25);
             this.btnCarrito.TabIndex = 0;
             this.btnCarrito.Text = "Agregar al carrito";
             this.btnCarrito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCarrito.UseVisualStyleBackColor = true;
+            this.btnCarrito.Click += new System.EventHandler(this.btnCarrito_Click);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvProductos);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 22);
+            this.panel3.Location = new System.Drawing.Point(0, 25);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(576, 321);
+            this.panel3.Size = new System.Drawing.Size(576, 318);
             this.panel3.TabIndex = 2;
             // 
             // dgvProductos
@@ -145,7 +147,7 @@ namespace ClientFacturas
             this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProductos.Location = new System.Drawing.Point(0, 0);
             this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.Size = new System.Drawing.Size(576, 321);
+            this.dgvProductos.Size = new System.Drawing.Size(576, 318);
             this.dgvProductos.TabIndex = 0;
             // 
             // Producto
@@ -179,6 +181,6 @@ namespace ClientFacturas
         private Button btnAgregar;
         private Button btnCarrito;
         private TextBox txtBuscarProducto;
-        private Button btnCerrar;
+        private Button btnVolver;
     }
 }
