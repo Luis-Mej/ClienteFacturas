@@ -53,14 +53,6 @@ namespace ClientFacturas
 
                         dgvProductos.Columns.Clear();
 
-                        DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn
-                        {
-                            Name = "Seleccionado",
-                            HeaderText = "",
-                            Width = 30
-                        };
-                        dgvProductos.Columns.Add(checkColumn);
-
                         dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
                         {
                             DataPropertyName = "Nombre",
@@ -117,34 +109,6 @@ namespace ClientFacturas
         //    }
         //}
 
-        private List<ProductoDTO> ObtenerProductosSeleccionados()
-        {
-            var seleccionados = new List<ProductoDTO>();
-
-            foreach (DataGridViewRow fila in dgvProductos.Rows)
-            {
-                bool marcado = Convert.ToBoolean(fila.Cells["Seleccionado"].Value);
-                if (marcado)
-                {
-                    if (fila.DataBoundItem is ProductoDTO producto)
-                    {
-                        seleccionados.Add(producto);
-                    }
-                }
-            }
-
-            return seleccionados;
-        }
-
-        private async void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Detalles form = new Detalles();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                _ = CargarProductos();
-            }
-        }
-
         private void txtBuscarProducto_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtBuscarProducto.Text.ToLower().Trim();
@@ -154,28 +118,7 @@ namespace ClientFacturas
             dgvProductos.DataSource = productosFiltrados;
         }
 
-        private void btnCarrito_Click(object sender, EventArgs e)
-        {
-            var seleccionados = ObtenerProductosSeleccionados();
-
-            if (seleccionados.Count == 0)
-            {
-                MessageBox.Show("No se han seleccionado productos.");
-                return;
-            }
-            var detallesSeleccionados = seleccionados.Select(p => new FacturaDetDTO
-            {
-                IdProducto = p.Id,
-                NombreProducto = p.Nombre,
-                PrecioUnitario = p.Precio,
-                Cantidad = 1
-            }).ToList();
-
-            Carrito carritoForm = new Carrito(detallesSeleccionados);
-            carritoForm.ShowDialog();
-        }
-
-        private async Task btnEditar_Click(object sender, EventArgs e)
+        private async void btnEditar_Click(object sender, EventArgs e)
         {
             if (dgvProductos.CurrentRow?.DataBoundItem is ProductoDTO productoElejido)
             {
@@ -191,7 +134,7 @@ namespace ClientFacturas
             }
         }
 
-        private async Task btnEliminar_Click(object sender, EventArgs e)
+        private async void btnEliminar_Click(object sender, EventArgs e)
         {
             if (dgvProductos.CurrentRow?.DataBoundItem is ProductoDTO productoElegido)
             {
@@ -237,6 +180,15 @@ namespace ClientFacturas
             else
             {
                 MessageBox.Show("Seleccione un producto para eliminar.");
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Detalles form = new Detalles();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _ = CargarProductos();
             }
         }
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dtos.UsuariosDTOS;
 
 namespace ClientFacturas
 {
@@ -38,7 +39,7 @@ namespace ClientFacturas
 
         private void btnUsuario_Click(object sender, EventArgs e)
         {
-            EditUsuario usuario = new EditUsuario();
+            EditUsuario usuario = new EditUsuario(null);
             usuario.FormClosed += (s, args) => this.Show();
             this.Hide();
             usuario.Show();

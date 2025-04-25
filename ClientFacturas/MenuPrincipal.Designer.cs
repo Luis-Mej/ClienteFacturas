@@ -43,9 +43,9 @@
             // 
             this.panel1.Controls.Add(this.btnCerrarSesion);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 413);
+            this.panel1.Location = new System.Drawing.Point(0, 355);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 36);
+            this.panel1.Size = new System.Drawing.Size(598, 36);
             this.panel1.TabIndex = 0;
             // 
             // btnCerrarSesion
@@ -68,12 +68,12 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 413);
+            this.panel2.Size = new System.Drawing.Size(598, 355);
             this.panel2.TabIndex = 1;
             // 
             // btnUsuario
             // 
-            this.btnUsuario.Location = new System.Drawing.Point(405, 213);
+            this.btnUsuario.Location = new System.Drawing.Point(311, 196);
             this.btnUsuario.Name = "btnUsuario";
             this.btnUsuario.Size = new System.Drawing.Size(144, 74);
             this.btnUsuario.TabIndex = 3;
@@ -83,7 +83,7 @@
             // 
             // btnFacturasCab
             // 
-            this.btnFacturasCab.Location = new System.Drawing.Point(209, 213);
+            this.btnFacturasCab.Location = new System.Drawing.Point(115, 196);
             this.btnFacturasCab.Name = "btnFacturasCab";
             this.btnFacturasCab.Size = new System.Drawing.Size(144, 74);
             this.btnFacturasCab.TabIndex = 2;
@@ -93,7 +93,7 @@
             // 
             // btnCompras
             // 
-            this.btnCompras.Location = new System.Drawing.Point(405, 89);
+            this.btnCompras.Location = new System.Drawing.Point(311, 72);
             this.btnCompras.Name = "btnCompras";
             this.btnCompras.Size = new System.Drawing.Size(144, 74);
             this.btnCompras.TabIndex = 1;
@@ -103,7 +103,7 @@
             // 
             // btnProductos
             // 
-            this.btnProductos.Location = new System.Drawing.Point(209, 89);
+            this.btnProductos.Location = new System.Drawing.Point(115, 72);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(144, 74);
             this.btnProductos.TabIndex = 0;
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 449);
+            this.ClientSize = new System.Drawing.Size(598, 391);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "MenuPrincipal";

@@ -38,7 +38,6 @@ namespace ClientFacturas
             this.btnAgregar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtBuscarProducto = new System.Windows.Forms.TextBox();
-            this.btnCarrito = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
@@ -100,45 +99,33 @@ namespace ClientFacturas
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar P.";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.txtBuscarProducto);
-            this.panel2.Controls.Add(this.btnCarrito);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(576, 25);
+            this.panel2.Size = new System.Drawing.Size(576, 22);
             this.panel2.TabIndex = 1;
             // 
             // txtBuscarProducto
             // 
-            this.txtBuscarProducto.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtBuscarProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBuscarProducto.Location = new System.Drawing.Point(0, 0);
             this.txtBuscarProducto.Name = "txtBuscarProducto";
-            this.txtBuscarProducto.Size = new System.Drawing.Size(448, 20);
+            this.txtBuscarProducto.Size = new System.Drawing.Size(576, 20);
             this.txtBuscarProducto.TabIndex = 1;
             this.txtBuscarProducto.TextChanged += new System.EventHandler(this.txtBuscarProducto_TextChanged);
-            // 
-            // btnCarrito
-            // 
-            this.btnCarrito.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCarrito.Location = new System.Drawing.Point(481, 0);
-            this.btnCarrito.Name = "btnCarrito";
-            this.btnCarrito.Size = new System.Drawing.Size(95, 25);
-            this.btnCarrito.TabIndex = 0;
-            this.btnCarrito.Text = "Agregar al carrito";
-            this.btnCarrito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCarrito.UseVisualStyleBackColor = true;
-            this.btnCarrito.Click += new System.EventHandler(this.btnCarrito_Click);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvProductos);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 25);
+            this.panel3.Location = new System.Drawing.Point(0, 22);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(576, 318);
+            this.panel3.Size = new System.Drawing.Size(576, 321);
             this.panel3.TabIndex = 2;
             // 
             // dgvProductos
@@ -147,7 +134,7 @@ namespace ClientFacturas
             this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProductos.Location = new System.Drawing.Point(0, 0);
             this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.Size = new System.Drawing.Size(576, 318);
+            this.dgvProductos.Size = new System.Drawing.Size(576, 321);
             this.dgvProductos.TabIndex = 0;
             // 
             // Producto
@@ -179,7 +166,6 @@ namespace ClientFacturas
         private Button btnEliminar;
         private Button btnEditar;
         private Button btnAgregar;
-        private Button btnCarrito;
         private TextBox txtBuscarProducto;
         private Button btnVolver;
     }
