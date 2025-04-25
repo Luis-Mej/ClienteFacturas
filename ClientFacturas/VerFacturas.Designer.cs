@@ -58,6 +58,7 @@
             this.btnVolver.TabIndex = 0;
             this.btnVolver.Text = "Volver al Menú";
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // panel2
             // 

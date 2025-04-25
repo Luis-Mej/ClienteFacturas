@@ -60,5 +60,13 @@ namespace ClientFacturas
             this.Hide();
             compras.Show();
         }
+
+        public void VolverAlMenu(object sender, EventArgs e)
+        {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            menuPrincipal.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            menuPrincipal.Show();
+        }
     }
 }

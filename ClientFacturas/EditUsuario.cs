@@ -91,5 +91,10 @@ namespace ClientFacturas
                 btnActualizar.Enabled = true;
             }
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

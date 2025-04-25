@@ -31,127 +31,126 @@ namespace ClientFacturas
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            txtNombreProducto = new TextBox();
-            txtPrecio = new TextBox();
-            txtStock = new TextBox();
-            panel1 = new Panel();
-            btnCancelar = new Button();
-            btnGuardar = new Button();
-            panel1.SuspendLayout();
-            SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtNombreProducto = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtStock = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(121, 36);
-            label1.Name = "label1";
-            label1.Size = new Size(108, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Datos del Producto";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(104, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Datos del Producto";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(41, 116);
-            label2.Name = "label2";
-            label2.Size = new Size(128, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Nombre del Producto :";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(35, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Nombre del Producto :";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(41, 183);
-            label3.Name = "label3";
-            label3.Size = new Size(46, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Precio :";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(35, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Precio :";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(41, 232);
-            label4.Name = "label4";
-            label4.Size = new Size(42, 15);
-            label4.TabIndex = 3;
-            label4.Text = "Stock :";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 201);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Stock :";
             // 
             // txtNombreProducto
             // 
-            txtNombreProducto.Location = new Point(213, 120);
-            txtNombreProducto.Name = "txtNombreProducto";
-            txtNombreProducto.Size = new Size(100, 23);
-            txtNombreProducto.TabIndex = 4;
+            this.txtNombreProducto.Location = new System.Drawing.Point(183, 104);
+            this.txtNombreProducto.Name = "txtNombreProducto";
+            this.txtNombreProducto.Size = new System.Drawing.Size(86, 20);
+            this.txtNombreProducto.TabIndex = 4;
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(213, 175);
-            txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(100, 23);
-            txtPrecio.TabIndex = 5;
+            this.txtPrecio.Location = new System.Drawing.Point(183, 152);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(86, 20);
+            this.txtPrecio.TabIndex = 5;
             // 
             // txtStock
             // 
-            txtStock.Location = new Point(213, 224);
-            txtStock.Name = "txtStock";
-            txtStock.Size = new Size(100, 23);
-            txtStock.TabIndex = 6;
+            this.txtStock.Location = new System.Drawing.Point(183, 194);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(86, 20);
+            this.txtStock.TabIndex = 6;
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnCancelar);
-            panel1.Controls.Add(btnGuardar);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 329);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(372, 41);
-            panel1.TabIndex = 7;
+            this.panel1.Controls.Add(this.btnCancelar);
+            this.panel1.Controls.Add(this.btnGuardar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 285);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(319, 36);
+            this.panel1.TabIndex = 7;
             // 
             // btnCancelar
             // 
-            btnCancelar.Dock = DockStyle.Right;
-            btnCancelar.Location = new Point(222, 0);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 41);
-            btnCancelar.TabIndex = 1;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
+            this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCancelar.Location = new System.Drawing.Point(191, 0);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(64, 36);
+            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnGuardar
             // 
-            btnGuardar.Dock = DockStyle.Right;
-            btnGuardar.Location = new Point(297, 0);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 41);
-            btnGuardar.TabIndex = 0;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
-            btnGuardar.Click += btnGuardar_Click;
+            this.btnGuardar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnGuardar.Location = new System.Drawing.Point(255, 0);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(64, 36);
+            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
             // 
             // Detalles
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(372, 370);
-            Controls.Add(panel1);
-            Controls.Add(txtStock);
-            Controls.Add(txtPrecio);
-            Controls.Add(txtNombreProducto);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Name = "Detalles";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Detalles";
-            panel1.ResumeLayout(false);
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(319, 321);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.txtStock);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtNombreProducto);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "Detalles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Detalles";
+            this.panel1.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

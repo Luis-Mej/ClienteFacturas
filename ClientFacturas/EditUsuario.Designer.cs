@@ -67,8 +67,10 @@
             // 
             this.txtContrasenaNueva.Location = new System.Drawing.Point(58, 147);
             this.txtContrasenaNueva.Name = "txtContrasenaNueva";
+            this.txtContrasenaNueva.PasswordChar = '*';
             this.txtContrasenaNueva.Size = new System.Drawing.Size(197, 20);
             this.txtContrasenaNueva.TabIndex = 3;
+            this.txtContrasenaNueva.UseSystemPasswordChar = true;
             // 
             // panel1
             // 
@@ -100,6 +102,7 @@
             this.btnVolver.TabIndex = 0;
             this.btnVolver.Text = "Volver al Menú";
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // EditUsuario
             // 

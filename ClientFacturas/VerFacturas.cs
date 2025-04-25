@@ -38,6 +38,7 @@ namespace ClientFacturas
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SesionActual.Token);
                 var respuesta = await client.GetAsync("https://localhost:7037/api/Facturas");
+
                 if (respuesta.IsSuccessStatusCode)
                 {
                     var json = await respuesta.Content.ReadAsStringAsync();
@@ -94,7 +95,11 @@ namespace ClientFacturas
                             DataPropertyName = "NombreUsuario",
                             HeaderText = "Nombre Usuario"
                         });
-                        dgvFacturas.DataSource = Facturas;
+                        dgvFacturas.DataSource = new BindingList<FactCabeceraDTO>(Facturas);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron facturas.");
                     }
                 }
                 else
@@ -102,6 +107,12 @@ namespace ClientFacturas
                     MessageBox.Show("Error al cargar las facturas: " + respuesta.ReasonPhrase);
                 }
             }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            menuPrincipal.VolverAlMenu(sender, e);
         }
     }
 }
