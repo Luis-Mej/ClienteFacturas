@@ -37,7 +37,7 @@ namespace ClientFacturas
             btnActualizar.Click += btnActualizar_Click;
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
+        private async void btnActualizar_Click(object sender, EventArgs e)
         {
             btnActualizar.Enabled = false;
 
@@ -69,9 +69,9 @@ namespace ClientFacturas
 
                         var url = $"https://localhost:7097/api/Usuarios/{idUsuarioEditar}";
 
-                        var respuesta = await client.PutAsync(url, content);
+                        var respuestaAct = await client.PutAsync(url, content);
 
-                        if (respuesta.IsSuccessStatusCode)
+                        if (respuestaAct.IsSuccessStatusCode)
                         {
                             MessageBox.Show("Usuario actualizado exitosamente.");
                             DialogResult = DialogResult.OK;
@@ -79,7 +79,7 @@ namespace ClientFacturas
                         }
                         else
                         {
-                            var mensajeError = respuesta.Content.ReadAsStringAsync();
+                            var mensajeError = respuestaAct.Content.ReadAsStringAsync();
                             MessageBox.Show($"Error al actualizar el usuario: {mensajeError}");
                         }
                     }
