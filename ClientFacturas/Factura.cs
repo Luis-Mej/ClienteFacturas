@@ -15,6 +15,7 @@ using ClientFacturas.Reports;
 using Dtos;
 using Dtos.FacturasDTOS;
 using Dtos.ProductosDTOS;
+using Newtonsoft.Json;
 using Sesion;
 
 namespace ClientFacturas
@@ -35,26 +36,30 @@ namespace ClientFacturas
 
         private bool ValidarCampos()
         {
-            if (string.IsNullOrWhiteSpace(txtCliente.Text) && !txtCliente.Text.All(char.IsLetter))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtCliente.Text, @"^[a-zA-Z\s]+$"))
             {
-                MessageBox.Show("El campo Cliente es obligatorio y debe contener solo letras.");
+                MessageBox.Show("El campo 'Cliente' solo puede contener letras y espacios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(txtIdentificacion.Text) && !txtIdentificacion.Text.All(char.IsDigit) && txtIdentificacion.Text.Length == 10)
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtIdentificacion.Text, @"^\d{10}$"))
             {
-                MessageBox.Show("El campo Identificación no es válido.");
+                MessageBox.Show("El campo 'Identificación' solo puede contener números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(txtTelefono.Text) && !txtTelefono.Text.All(char.IsDigit) && txtTelefono.Text.Length == 10)
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtTelefono.Text, @"^\d{10}$"))
             {
-                MessageBox.Show("El campo teléfono no es válido");
+                MessageBox.Show("El campo 'Teléfono' solo puede contener números.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(txtEmail.Text) && !txtEmail.Text.Contains("@") && !txtEmail.Text.EndsWith(".com"))
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtEmail.Text, @"^[^@\s]+@[^@\s]+\.(com)$"))
             {
-                MessageBox.Show("El campo Email no es válido.");
+                MessageBox.Show("El campo 'Email' no es válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+
             return true;
         }
 
@@ -151,7 +156,7 @@ namespace ClientFacturas
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SesionActual.Token);
 
-            var json = JsonSerializer.Serialize(guardarFactura);
+            var json = System.Text.Json.JsonSerializer.Serialize(guardarFactura);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(Url, content);
 
@@ -160,7 +165,7 @@ namespace ClientFacturas
             {
                 FacturaVisualDTO facturaVisual = new FacturaVisualDTO();
                 var responseContent = await response.Content.ReadAsStringAsync();
-                var responseObject = JsonSerializer.Deserialize<ResponseBase<FacturaVisualDTO>>(responseContent, new JsonSerializerOptions
+                var responseObject = System.Text.Json.JsonSerializer.Deserialize<ResponseBase<FacturaVisualDTO>>(responseContent, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 });

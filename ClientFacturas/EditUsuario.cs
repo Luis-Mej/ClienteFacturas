@@ -10,6 +10,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dtos.UsuariosDTOS;
+using Sesion;
 
 namespace ClientFacturas
 {
@@ -45,7 +46,7 @@ namespace ClientFacturas
                 string usuario = txtUsuario.Text.Trim();
                 string contrasena = txtContrasenaNueva.Text.Trim();
 
-                if (string.IsNullOrEmpty(usuario) || contrasena == null)
+                if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
                 {
                     MessageBox.Show("Se deben llenar todos los campos.");
                     return;
@@ -55,14 +56,20 @@ namespace ClientFacturas
 
                 using (HttpClient client = new HttpClient())
                 {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", SesionActual.Token);
+
                     var json = JsonSerializer.Serialize(usuarioDTOs);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                     HttpResponseMessage respuesta;
 
-                    if (EditarUsuario == null)
+                    if (EditarUsuario != null)
                     {
-                        respuesta = client.PutAsync("https://localhost:7097/api/Usuarios", content).Result;
+                        int idUsuarioEditar = EditarUsuario.Id;
+
+                        var url = $"https://localhost:7097/api/Usuarios/{idUsuarioEditar}";
+
+                        var respuesta = await client.PutAsync(url, content);
 
                         if (respuesta.IsSuccessStatusCode)
                         {
@@ -72,14 +79,14 @@ namespace ClientFacturas
                         }
                         else
                         {
-                            MessageBox.Show("Error al actualizar el usuario.");
+                            var mensajeError = respuesta.Content.ReadAsStringAsync();
+                            MessageBox.Show($"Error al actualizar el usuario: {mensajeError}");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Error: No se puede editar el usuario.");
+                        MessageBox.Show("Error: No se encontró el usuario para editar.");
                     }
-
                 }
             }
             catch (Exception ex)
@@ -94,7 +101,7 @@ namespace ClientFacturas
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-
+            MenuPrincipal.VolverAlMenuPrincipal(this);
         }
     }
 }

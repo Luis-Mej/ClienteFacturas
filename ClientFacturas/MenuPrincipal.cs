@@ -13,9 +13,12 @@ namespace ClientFacturas
 {
     public partial class MenuPrincipal : Form
     {
+        public static MenuPrincipal Instancia { get; private set; }
+
         public MenuPrincipal()
         {
             InitializeComponent();
+            Instancia = this;
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -61,12 +64,13 @@ namespace ClientFacturas
             compras.Show();
         }
 
-        public void VolverAlMenu(object sender, EventArgs e)
+        public static void VolverAlMenuPrincipal(Form pantallaActual)
         {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
-            menuPrincipal.FormClosed += (s, args) => this.Show();
-            this.Hide();
-            menuPrincipal.Show();
+            if (Instancia != null)
+            {
+                Instancia.Show();
+                pantallaActual.Close();
+            }
         }
     }
 }

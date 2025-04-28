@@ -92,23 +92,6 @@ namespace ClientFacturas
             }
         }
 
-        //private async Task<int?> ObtenerIdProductosPorNombre(string nombre)
-        //{
-        //    using (HttpClient client = new HttpClient())
-        //    {
-        //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SesionActual.Token);
-        //        var respuesta = await client.GetAsync($"https://localhost:7037/api/Productos?nombre={Uri.EscapeDataString(nombre)}");
-
-        //        if (respuesta.IsSuccessStatusCode)
-        //        {
-        //            var json = await respuesta.Content.ReadAsStringAsync();
-        //            var resultado = JsonSerializer.Deserialize<ResponseBase<List<ProductoDTO>>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        //            return resultado?.Data?.FirstOrDefault()?.Id;
-        //        }
-        //        return null;
-        //    }
-        //}
-
         private void txtBuscarProducto_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtBuscarProducto.Text.ToLower().Trim();
@@ -190,6 +173,11 @@ namespace ClientFacturas
             {
                 _ = CargarProductos();
             }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            MenuPrincipal.VolverAlMenuPrincipal(this);
         }
     }
 }
