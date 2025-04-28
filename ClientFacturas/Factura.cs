@@ -204,5 +204,59 @@ namespace ClientFacturas
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void txtIdentificacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtIdentificacion_TextChanged(object sender, EventArgs e)
+        {
+            int numeroMax=10;
+
+            if (txtIdentificacion.Text.Length > numeroMax)
+            {
+                txtIdentificacion.Text = txtIdentificacion.Text.Substring(0, numeroMax);
+                txtIdentificacion.SelectionStart = txtIdentificacion.Text.Length;
+            }
+        }
+
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
+        {
+            int numeroMax = 10;
+
+            if (txtTelefono.Text.Length > numeroMax)
+            {
+                txtTelefono.Text = txtTelefono.Text.Substring(0, numeroMax);
+                txtTelefono.SelectionStart = txtTelefono.Text.Length;
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '@' && e.KeyChar != '.' && e.KeyChar != '_')
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

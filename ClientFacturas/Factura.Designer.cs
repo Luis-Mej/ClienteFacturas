@@ -192,6 +192,7 @@ namespace ClientFacturas
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(86, 20);
             this.txtEmail.TabIndex = 8;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // txtTelefono
             // 
@@ -199,6 +200,8 @@ namespace ClientFacturas
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(86, 20);
             this.txtTelefono.TabIndex = 7;
+            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // txtIdentificacion
             // 
@@ -206,6 +209,8 @@ namespace ClientFacturas
             this.txtIdentificacion.Name = "txtIdentificacion";
             this.txtIdentificacion.Size = new System.Drawing.Size(86, 20);
             this.txtIdentificacion.TabIndex = 6;
+            this.txtIdentificacion.TextChanged += new System.EventHandler(this.txtIdentificacion_TextChanged);
+            this.txtIdentificacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdentificacion_KeyPress);
             // 
             // txtCliente
             // 
@@ -213,6 +218,7 @@ namespace ClientFacturas
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(86, 20);
             this.txtCliente.TabIndex = 5;
+            this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_KeyPress);
             // 
             // label5
             // 

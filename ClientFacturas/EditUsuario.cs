@@ -8,9 +8,11 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Net.Http.Headers;
 using System.Windows.Forms;
 using Dtos.UsuariosDTOS;
 using Sesion;
+using Dtos;
 
 namespace ClientFacturas
 {
@@ -36,66 +38,44 @@ namespace ClientFacturas
             btnActualizar.Click -= btnActualizar_Click;
             btnActualizar.Click += btnActualizar_Click;
         }
-
+        //Revisar mas tardecito ^^
         private async void btnActualizar_Click(object sender, EventArgs e)
         {
-            btnActualizar.Enabled = false;
-
-            try
+            if (SesionActual.IdUsuario == null)
             {
-                string usuario = txtUsuario.Text.Trim();
-                string contrasena = txtContrasenaNueva.Text.Trim();
-
-                if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
-                {
-                    MessageBox.Show("Se deben llenar todos los campos.");
-                    return;
-                }
-
-                UsuarioDTOs usuarioDTOs = new UsuarioDTOs(usuario, contrasena);
-
-                using (HttpClient client = new HttpClient())
-                {
-                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", SesionActual.Token);
-
-                    var json = JsonSerializer.Serialize(usuarioDTOs);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage respuesta;
-
-                    if (EditarUsuario != null)
-                    {
-                        int idUsuarioEditar = EditarUsuario.Id;
-
-                        var url = $"https://localhost:7097/api/Usuarios/{idUsuarioEditar}";
-
-                        var respuestaAct = await client.PutAsync(url, content);
-
-                        if (respuestaAct.IsSuccessStatusCode)
-                        {
-                            MessageBox.Show("Usuario actualizado exitosamente.");
-                            DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
-                        else
-                        {
-                            var mensajeError = respuestaAct.Content.ReadAsStringAsync();
-                            MessageBox.Show($"Error al actualizar el usuario: {mensajeError}");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error: No se encontró el usuario para editar.");
-                    }
-                }
+                MessageBox.Show("Error: Usuario inválido");
+                return;
             }
-            catch (Exception ex)
+
+            var actulizarDatos = new UsuarioDTOs();
+
+            actulizarDatos.Nombre = txtUsuario.Text;
+            actulizarDatos.Contrasenia = txtContrasenaNueva.Text;
+
+            HttpClient client = new HttpClient();
+            string Url = $"https://localhost:7037/api/Usuarios/{SesionActual.IdUsuario}";
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SesionActual.Token);
+
+            var json = JsonSerializer.Serialize(actulizarDatos);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var respuesta= await client.PutAsync(Url, content);
+
+            if (respuesta.IsSuccessStatusCode)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                var respuestaContent = await respuesta.Content.ReadAsStringAsync();
+                var respuestaObj = JsonSerializer.Deserialize<ResponseBase<UsuarioDTOs>>(respuestaContent, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                MessageBox.Show("Usuario actualizado");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            finally
+            else
             {
-                btnActualizar.Enabled = true;
+                MessageBox.Show("Error: No se pudo actualizar el usuario.");
             }
         }
 

@@ -18,7 +18,7 @@ namespace ClientFacturas
 {
     public partial class VerFacturas : Form
     {
-        private List<FactCabeceraDTO> Facturas = new List<FactCabeceraDTO>();
+        private List<FacturaCabDTO> Facturas = new List<FacturaCabDTO>();
 
         public VerFacturas()
         {
@@ -42,7 +42,7 @@ namespace ClientFacturas
                 if (respuesta.IsSuccessStatusCode)
                 {
                     var json = await respuesta.Content.ReadAsStringAsync();
-                    var resultado = JsonSerializer.Deserialize<ResponseBase<List<FactCabeceraDTO>>>(json, new JsonSerializerOptions
+                    var resultado = JsonSerializer.Deserialize<ResponseBase<List<FacturaCabDTO>>>(json, new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
                     });
@@ -95,7 +95,7 @@ namespace ClientFacturas
                             DataPropertyName = "NombreUsuario",
                             HeaderText = "Nombre Usuario"
                         });
-                        dgvFacturas.DataSource = new BindingList<FactCabeceraDTO>(Facturas);
+                        dgvFacturas.DataSource = new BindingList<FacturaCabDTO>(Facturas);
                     }
                     else
                     {

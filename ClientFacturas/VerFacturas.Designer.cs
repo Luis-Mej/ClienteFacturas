@@ -104,6 +104,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "VerFacturas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ver Facturas";
             this.Load += new System.EventHandler(this.VerFacturas_Load);
             this.panel1.ResumeLayout(false);

@@ -16,6 +16,7 @@ namespace ClientFacturas
 {
     public partial class Registrar : Form
     {
+        private UsuarioDTOs EditarUsuario;
         public Registrar()
         {
             InitializeComponent();
@@ -34,47 +35,51 @@ namespace ClientFacturas
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
             btnGuardar.Enabled = false;
-
-            string nombre = txtNombre.Text.Trim();
-            string contrasenia = txtContrasenia.Text.Trim();
-            string contraseniaConfirmar = txtConfirContrasenia.Text.Trim();
-
-            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(contrasenia) || string.IsNullOrEmpty(contraseniaConfirmar))
+            try
             {
-                MessageBox.Show("Por favor, complete todos los campos.");
-                btnGuardar.Enabled = true;
-                return;
-            }
-            if (contrasenia != contraseniaConfirmar)
-            {
-                MessageBox.Show("Las contraseñas no coinciden.");
-                btnGuardar.Enabled = true;
-                return;
-            }
+                int id = EditarUsuario?.Id ?? 0;
+                string nombre = txtNombre.Text.Trim();
+                string contrasenia = txtContrasenia.Text.Trim();
+                string contraseniaConfirmar = txtConfirContrasenia.Text.Trim();
 
-            UsuarioDTOs usuarioDTOs = new UsuarioDTOs(nombre, contrasenia);
-            HttpClient client = new HttpClient();
-            string Url = "https://localhost:7037/api/Usuarios";
-
-            var json = JsonSerializer.Serialize(usuarioDTOs);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(Url, content);
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonResponse = response.Content.ReadAsStringAsync();
-                var parsed = JsonSerializer.Deserialize<ResponseBase<string>>(await jsonResponse, new JsonSerializerOptions
+                if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(contrasenia) || string.IsNullOrEmpty(contraseniaConfirmar))
                 {
-                    PropertyNameCaseInsensitive = true
-                });
-                MessageBox.Show("Usuario registrado exitosamente.");
-                this.Close();
+                    MessageBox.Show("Por favor, complete todos los campos.");
+                    btnGuardar.Enabled = true;
+                    return;
+                }
+                if (contrasenia != contraseniaConfirmar)
+                {
+                    MessageBox.Show("Las contraseñas no coinciden.");
+                    btnGuardar.Enabled = true;
+                    return;
+                }
+
+                UsuarioDTOs usuarioDTOs = new UsuarioDTOs(id, nombre, contrasenia);
+                HttpClient client = new HttpClient();
+                string Url = "https://localhost:7037/api/Usuarios";
+
+                var json = JsonSerializer.Serialize(usuarioDTOs);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(Url, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResponse = response.Content.ReadAsStringAsync();
+                    var parsed = JsonSerializer.Deserialize<ResponseBase<string>>(await jsonResponse, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+                    MessageBox.Show("Usuario registrado exitosamente.");
+                    this.Close();
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar el usuario: " + ex.Message);
+                btnGuardar.Enabled = true;
                 return;
             }
-            else
-            {
-                MessageBox.Show("Error al registrar el usuario.");
-            }
-            btnGuardar.Enabled = true;
         }
     }
 }
