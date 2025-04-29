@@ -57,43 +57,13 @@ namespace ClientFacturas
                         });
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
-                            DataPropertyName = "Identificacion",
-                            HeaderText = "Identificación"
-                        });
-                        dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "Telefono",
-                            HeaderText = "Teléfono"
-                        });
-                        dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "Email",
-                            HeaderText = "Email"
-                        });
-                        dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
-                        {
                             DataPropertyName = "FechaCreacion",
-                            HeaderText = "Fecha Creación"
-                        });
-                        dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "SubTotal",
-                            HeaderText = "SubTotal"
-                        });
-                        dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "Iva",
-                            HeaderText = "IVA"
+                            HeaderText = "Fecha"
                         });
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
                             DataPropertyName = "Total",
                             HeaderText = "Total"
-                        });
-                        dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "NombreUsuario",
-                            HeaderText = "Nombre Usuario"
                         });
                         dgvFacturas.DataSource = new BindingList<FacturaCabDTO>(Facturas);
                     }
