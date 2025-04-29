@@ -55,7 +55,7 @@ namespace ClientFacturas
                     return;
                 }
 
-                UsuarioDTOs usuarioDTOs = new UsuarioDTOs(nombre, contrasenia);
+                UsuarioDTOs usuarioDTOs = new UsuarioDTOs(id, nombre, contrasenia);
                 HttpClient client = new HttpClient();
                 string Url = "https://localhost:7037/api/Usuarios";
 
