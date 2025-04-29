@@ -65,6 +65,11 @@ namespace ClientFacturas
                             DataPropertyName = "Total",
                             HeaderText = "Total"
                         });
+                        dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            DataPropertyName = "IdUsuario",
+                            HeaderText = "Nombre Usuario"
+                        });
                         dgvFacturas.DataSource = new BindingList<FacturaCabDTO>(Facturas);
                     }
                     else
