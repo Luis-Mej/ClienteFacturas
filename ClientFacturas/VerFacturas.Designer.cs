@@ -94,6 +94,7 @@
             this.dgvFacturas.Name = "dgvFacturas";
             this.dgvFacturas.Size = new System.Drawing.Size(544, 410);
             this.dgvFacturas.TabIndex = 0;
+            this.dgvFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellDoubleClick);
             // 
             // VerFacturas
             // 
