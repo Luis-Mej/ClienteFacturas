@@ -91,25 +91,6 @@ namespace ClientFacturas
             MenuPrincipal.VolverAlMenuPrincipal(this);
         }
 
-        private async Task dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var idFactura = (int)dgvFacturas.Rows[e.RowIndex].Cells["IdFactura"].Value;
-                var facturaVisual = await ObtenerFacturaVisual(idFactura);
-
-                if(facturaVisual != null)
-                {
-                    var verFactura = new FacturaReport(facturaVisual);
-                    verFactura.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo obtener la factura.");
-                }
-            }
-        }
-
         private async Task<FacturaVisualDTO> ObtenerFacturaVisual(int idFactura)
         {
             using (HttpClient client = new HttpClient())
@@ -129,6 +110,25 @@ namespace ClientFacturas
                 {
                     MessageBox.Show("Error al cargar la factura: " + respuesta.ReasonPhrase);
                     return null;
+                }
+            }
+        }
+
+        private async void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var idFactura = (int)dgvFacturas.Rows[e.RowIndex].Cells["IdFactura"].Value;
+                var facturaVisual = await ObtenerFacturaVisual(idFactura);
+
+                if (facturaVisual != null)
+                {
+                    var verFactura = new FacturaReport(facturaVisual);
+                    verFactura.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo obtener la factura.");
                 }
             }
         }
