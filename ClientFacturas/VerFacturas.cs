@@ -11,6 +11,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientFacturas.Reports;
+using Dto.FacturasDTOS;
 using Dtos;
 using Dtos.FacturasDTOS;
 using Sesion;
@@ -19,7 +20,7 @@ namespace ClientFacturas
 {
     public partial class VerFacturas : Form
     {
-        private List<FacturaCabDTO> Facturas = new List<FacturaCabDTO>();
+        private List<FacturasDTOs> Facturas = new List<FacturasDTOs>();
 
         public VerFacturas()
         {
@@ -43,7 +44,7 @@ namespace ClientFacturas
                 if (respuesta.IsSuccessStatusCode)
                 {
                     var json = await respuesta.Content.ReadAsStringAsync();
-                    var resultado = JsonSerializer.Deserialize<ResponseBase<List<FacturaCabDTO>>>(json, new JsonSerializerOptions
+                    var resultado = JsonSerializer.Deserialize<ResponseBase<List<FacturasDTOs>>>(json, new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
                     });
@@ -53,18 +54,27 @@ namespace ClientFacturas
                         dgvFacturas.Columns.Clear();
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
+                            DataPropertyName = "IdFactura",
+                            HeaderText = "ID",
+                            Visible = false
+                        });
+                        dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
+                        {
                             DataPropertyName = "NombreCliente",
-                            HeaderText = "Nombre Cliente"
+                            HeaderText = "Nombre Cliente",
+                            ReadOnly = true
                         });
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
                             DataPropertyName = "FechaCreacion",
-                            HeaderText = "Fecha"
+                            HeaderText = "Fecha",
+                            ReadOnly = true
                         });
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
                             DataPropertyName = "Total",
-                            HeaderText = "Total"
+                            HeaderText = "Total",
+                            ReadOnly = true
                         });
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
@@ -72,7 +82,7 @@ namespace ClientFacturas
                             HeaderText = "Nombre Usuario",
                             Visible = false
                         });
-                        dgvFacturas.DataSource = new BindingList<FacturaCabDTO>(Facturas);
+                        dgvFacturas.DataSource = new BindingList<FacturasDTOs>(Facturas);
                     }
                     else
                     {
@@ -116,21 +126,37 @@ namespace ClientFacturas
 
         private async void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                var idFactura = (int)dgvFacturas.Rows[e.RowIndex].Cells["IdFactura"].Value;
-                var facturaVisual = await ObtenerFacturaVisual(idFactura);
+                if (e.RowIndex >= 0)
+                {
+                    var idFactura = (int)dgvFacturas.Rows[e.RowIndex].Cells["ID"].Value;
+                    var facturaVisual = await ObtenerFacturaVisual(idFactura);
 
-                if (facturaVisual != null)
-                {
-                    var verFactura = new FacturaReport(facturaVisual);
-                    verFactura.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo obtener la factura.");
+                    if (facturaVisual != null)
+                    {
+                        var verFactura = new FacturaReport(facturaVisual);
+                        verFactura.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo obtener la factura.");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la factura: " + ex.Message);
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtBuscar.Text.ToLower().Trim();
+
+            var facturasFiltradas = Facturas.Where(f=> f.IdFactura.ToString().Contains(filtro) || f.NombreCliente.ToLower().Contains(filtro) || f.FechaCreacion.ToString().Contains(filtro) || f.Total.ToString().Contains(filtro)).ToList();
+
+            dgvFacturas.DataSource = facturasFiltradas;
         }
     }
 }
