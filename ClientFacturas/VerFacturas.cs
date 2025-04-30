@@ -56,30 +56,35 @@ namespace ClientFacturas
                         {
                             DataPropertyName = "IdFactura",
                             HeaderText = "ID",
+                            Name = "ID",
                             Visible = false
                         });
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
                             DataPropertyName = "NombreCliente",
                             HeaderText = "Nombre Cliente",
+                            Name = "NombreCliente",
                             ReadOnly = true
                         });
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
                             DataPropertyName = "FechaCreacion",
                             HeaderText = "Fecha",
+                            Name = "Fecha",
                             ReadOnly = true
                         });
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
                             DataPropertyName = "Total",
                             HeaderText = "Total",
+                            Name = "Total",
                             ReadOnly = true
                         });
                         dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
                         {
                             DataPropertyName = "IdUsuario",
                             HeaderText = "Nombre Usuario",
+                            Name = "IdUsuario",
                             Visible = false
                         });
                         dgvFacturas.DataSource = new BindingList<FacturasDTOs>(Facturas);

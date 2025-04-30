@@ -48,7 +48,7 @@ namespace ClientFacturas
             }
 
             var actulizarDatos = new UsuarioDTOs();
-
+            actulizarDatos.Id = SesionActual.IdUsuario;
             actulizarDatos.Nombre = txtUsuario.Text;
             actulizarDatos.Contrasenia = txtContrasenaNueva.Text;
 
