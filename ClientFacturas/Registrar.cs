@@ -27,7 +27,10 @@ namespace ClientFacturas
         {
             if (MessageBox.Show("Desea cancelar el registro del usuario", "Cancelar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                this.Close();
+                Login login = new Login();
+                login.FormClosed += (s, args) => this.Close();
+                this.Hide();
+                login.Show();
             }
             return;
         }
@@ -70,8 +73,11 @@ namespace ClientFacturas
                         PropertyNameCaseInsensitive = true
                     });
                     MessageBox.Show("Usuario registrado exitosamente.");
-                    this.Close();
-                    return;
+
+                    Login login = new Login();
+                    login.FormClosed += (s, args) => this.Close();
+                    this.Hide();
+                    login.Show();
                 }
             }
             catch (Exception ex)

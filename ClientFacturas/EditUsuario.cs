@@ -38,7 +38,7 @@ namespace ClientFacturas
             btnActualizar.Click -= btnActualizar_Click;
             btnActualizar.Click += btnActualizar_Click;
         }
-        //Revisar mas tardecito ^^
+
         private async void btnActualizar_Click(object sender, EventArgs e)
         {
             if (SesionActual.IdUsuario == null)

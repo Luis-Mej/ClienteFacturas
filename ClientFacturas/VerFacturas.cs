@@ -80,16 +80,9 @@ namespace ClientFacturas
                             Name = "Total",
                             ReadOnly = true
                         });
-                        dgvFacturas.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "IdUsuario",
-                            HeaderText = "Nombre Usuario",
-                            Name = "IdUsuario",
-                            Visible = false
-                        });
                         dgvFacturas.DataSource = new BindingList<FacturasDTOs>(Facturas);
                     }
-                    else
+                    else                    
                     {
                         MessageBox.Show("No se encontraron facturas.");
                     }

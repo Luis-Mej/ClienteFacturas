@@ -120,16 +120,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.95549cm</Width>
+                  <Width>4.02164cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.2316cm</Width>
+                  <Width>2.29775cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.36799cm</Width>
+                  <Width>2.43414cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.40326cm</Width>
+                  <Width>2.46941cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -404,6 +404,7 @@
                             <rd:FormatSymbolCulture>es-EC</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -432,7 +433,7 @@
             <Top>4.33599cm</Top>
             <Left>0.63182cm</Left>
             <Height>1.2cm</Height>
-            <Width>10.95832cm</Width>
+            <Width>11.22292cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -490,9 +491,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
             <Top>0.52599cm</Top>
-            <Left>10.78347cm</Left>
+            <Left>10.35939cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.3148cm</Width>
+            <Width>2.73887cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -520,9 +521,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox13</rd:DefaultName>
             <Top>2.03412cm</Top>
-            <Left>10.78347cm</Left>
+            <Left>10.35939cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.3148cm</Width>
+            <Width>2.73887cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
