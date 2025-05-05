@@ -74,12 +74,20 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rutas\ApiRutas.cs" />
+    <Compile Include="Servicios\FacturaServicio.cs" />
+    <Compile Include="Servicios\LoginServicios.cs" />
     <Compile Include="Servicios\ProductoServicio.cs" />
+    <Compile Include="Servicios\UsuarioServicio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="..\..\Practica2\Facturacion.Shared.Dto\Facturacion.Shared.Dto.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\FacturasDto\FacturasDto.csproj">
+      <Project>{bd600ef0-4c12-460d-9d1f-510a98b4ae7c}</Project>
+      <Name>FacturasDto</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

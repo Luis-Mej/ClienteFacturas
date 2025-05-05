@@ -31,27 +31,9 @@ namespace ServiciosAPI.Rutas
             public const string Crear = UrlBase + "Facturas";
         }
 
-        public static class Detalles
-        {
-            public const string ObtenerTodos = UrlBase + "Detalles";
-            public const string ObtenerPorId = UrlBase + "Detalles/{id}";
-            public const string Crear = UrlBase + "Detalles";
-        }
-
         public static class Login
         {
             public const string Autenticar = UrlBase + "Login";
-        }
-
-        public static class Registro
-        {
-            public const string Registrar = UrlBase + "Registro";
-        }
-
-        public static class Sesion
-        {
-            public const string ObtenerUsuarioActual = UrlBase + "Sesion/UsuarioActual";
-            public const string CerrarSesion = UrlBase + "Sesion/CerrarSesion";
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ServiciosAPI.Servicios
 
         public async Task<List<ProductoDTO>> ObtenerProductosAsync()
         {
-            var response = await _client.GetAsync("https://localhost:7037/api/Productos");
+            var response = await _client.GetAsync(ApiRutas.Productos.ObtenerTodos);
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
@@ -47,6 +47,12 @@ namespace ServiciosAPI.Servicios
                 : await _client.PutAsync(ApiRutas.Productos.Actualizar, content);
 
             return respuesta.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> EliminarProductoAsync(int id)
+        {
+            var response = await _client.DeleteAsync($"{ApiRutas.Productos.Eliminar}/{id}");
+            return response.IsSuccessStatusCode;
         }
     }
 }

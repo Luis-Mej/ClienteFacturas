@@ -16,7 +16,9 @@ using Dtos;
 using Dtos.FacturasDTOS;
 using Dtos.ProductosDTOS;
 using Newtonsoft.Json;
+using ServiciosAPI.Servicios;
 using Sesion;
+using ServiciosAPI.Rutas;
 
 namespace ClientFacturas
 {
@@ -151,15 +153,13 @@ namespace ClientFacturas
 
             guardarFactura.Detalles = productoCarrito;
 
-            HttpClient client = new HttpClient();
-            string Url = "https://localhost:7037/api/Facturas";
-
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SesionActual.Token);
-
-            var json = System.Text.Json.JsonSerializer.Serialize(guardarFactura);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(Url, content);
-
+            FacturaServicio facturaServicio = new FacturaServicio();
+            var response = await facturaServicio.GuardarFactura(guardarFactura);
+            if (response == null)
+            {
+                MessageBox.Show("Error al guardar la factura");
+                return;
+            }
 
             if (response.IsSuccessStatusCode)
             {

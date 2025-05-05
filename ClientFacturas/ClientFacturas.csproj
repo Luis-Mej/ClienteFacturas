@@ -231,6 +231,10 @@
       <Project>{bd600ef0-4c12-460d-9d1f-510a98b4ae7c}</Project>
       <Name>FacturasDto</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ServiciosAPI\ServiciosAPI.csproj">
+      <Project>{7C6359E6-CD49-4340-9E72-896D8F01E049}</Project>
+      <Name>ServiciosAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sesion\Sesion.csproj">
       <Project>{ce1ba098-fe3f-459b-8fb4-db321a3512a1}</Project>
       <Name>Sesion</Name>

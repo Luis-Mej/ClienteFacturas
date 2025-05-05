@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dtos;
 using Dtos.UsuariosDTOS;
+using ServiciosAPI.Rutas;
+using ServiciosAPI.Servicios;
 using Sesion;
 
 namespace ClientFacturas
@@ -64,45 +66,46 @@ namespace ClientFacturas
                 Contrasenia = txtContrasena.Text
             };
 
+            LoginServicios client = new LoginServicios();
 
-            HttpClient client = new HttpClient();
-
-            string Url = "https://localhost:7037/api/Login";
+            string Url = ApiRutas.Login.Autenticar;
             var json = JsonSerializer.Serialize(usuarioLoginDTO);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync(Url, content);
+            var response = LoginServicios.ReferenceEquals(client, content);
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                
+            return;
 
-                var parsed = JsonSerializer.Deserialize<ResponseBase<string>>(jsonResponse, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-
-                SesionActual.Token = parsed.Data;
-                SesionActual.IdUsuario = ObtenerIdUsuarioDesdeToken(parsed.Data);
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    var jsonResponse = await response.Content.ReadAsStringAsync();
 
 
-                if (SesionActual.Token == null && SesionActual.IdUsuario ==0)
-                {
-                    MessageBox.Show("Error al iniciar sesión");
-                    return;
-                }
-                MessageBox.Show("Login exitoso");
-                this.Hide();
+            //    var parsed = JsonSerializer.Deserialize<ResponseBase<string>>(jsonResponse, new JsonSerializerOptions
+            //    {
+            //        PropertyNameCaseInsensitive = true
+            //    });
 
-                MenuPrincipal menuPrincipal = new MenuPrincipal();
-                menuPrincipal.FormClosed += (s, args) => this.Close();
-                menuPrincipal.Show();
-            }
-            else
-            {
-                MessageBox.Show("Error al iniciar sesión");
-            }
+            //    SesionActual.Token = parsed.Data;
+            //    SesionActual.IdUsuario = ObtenerIdUsuarioDesdeToken(parsed.Data);
+
+
+            //    if (SesionActual.Token == null && SesionActual.IdUsuario == 0)
+            //    {
+            //        MessageBox.Show("Error al iniciar sesión");
+            //        return;
+            //    }
+            //    MessageBox.Show("Login exitoso");
+            //    this.Hide();
+
+            //    MenuPrincipal menuPrincipal = new MenuPrincipal();
+            //    menuPrincipal.FormClosed += (s, args) => this.Close();
+            //    menuPrincipal.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Error al iniciar sesión");
+            //}
         }
 
         private void linkRegistro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
