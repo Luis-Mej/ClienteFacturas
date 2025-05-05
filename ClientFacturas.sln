@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sesion", "Sesion\Sesion.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Web", "API_Web\API_Web.csproj", "{5EF1EE6D-FB35-4A8F-866A-AF4C769A27E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosAPI", "ServiciosAPI\ServiciosAPI.csproj", "{7C6359E6-CD49-4340-9E72-896D8F01E049}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{5EF1EE6D-FB35-4A8F-866A-AF4C769A27E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EF1EE6D-FB35-4A8F-866A-AF4C769A27E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EF1EE6D-FB35-4A8F-866A-AF4C769A27E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C6359E6-CD49-4340-9E72-896D8F01E049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6359E6-CD49-4340-9E72-896D8F01E049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6359E6-CD49-4340-9E72-896D8F01E049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6359E6-CD49-4340-9E72-896D8F01E049}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +55,7 @@ Global
 		SolutionGuid = {29F76F1A-02F4-4856-9DFE-54E3819DFE23}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\Practica2\Facturacion.Shared.Dto\Facturacion.Shared.Dto.projitems*{7c6359e6-cd49-4340-9e72-896d8f01e049}*SharedItemsImports = 4
 		..\Practica2\Facturacion.Shared.Dto\Facturacion.Shared.Dto.projitems*{8c936f27-1325-4677-a98e-dc7c0474aad1}*SharedItemsImports = 13
 		..\Practica2\Facturacion.Shared.Dto\Facturacion.Shared.Dto.projitems*{bd600ef0-4c12-460d-9d1f-510a98b4ae7c}*SharedItemsImports = 4
 	EndGlobalSection
