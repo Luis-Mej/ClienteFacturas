@@ -58,7 +58,9 @@ namespace ClientFacturas
             return Convert.FromBase64String(input);
         }
 
-        private async void btnLogin_Click(object sender, EventArgs e)
+
+
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             UsuarioLoginDTO usuarioLoginDTO = new UsuarioLoginDTO
             {
@@ -69,10 +71,6 @@ namespace ClientFacturas
             LoginServicios client = new LoginServicios();
 
             string Url = ApiRutas.Login.Autenticar;
-            var json = JsonSerializer.Serialize(usuarioLoginDTO);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = LoginServicios.ReferenceEquals(client, content);
 
             return;
 

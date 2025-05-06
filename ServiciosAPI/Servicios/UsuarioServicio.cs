@@ -20,19 +20,21 @@ namespace ServiciosAPI.Servicios
             _client = new HttpClient();
         }
 
-        //public async Task<List<UsuarioDTOs>> ObtenerUsuariosAsync()
-        //{
-        //    var response = await _client.GetAsync(ApiRutas.Usuarios.ObtenerTodos);
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        var json = await response.Content.ReadAsStringAsync();
-        //        var resultado = JsonSerializer.Deserialize<ResponseBase<List<UsuarioDTOs>>>(json, new JsonSerializerOptions
-        //        {
-        //            PropertyNameCaseInsensitive = true
-        //        });
-        //        return resultado?.Data ?? new List<UsuarioDTOs>();
-        //    }
-        //    return new List<UsuarioDTOs>();
-        //}
+        public async void Login(UsuarioLoginDTO usuarioLoginDTO)
+        {
+            var json = JsonSerializer.Serialize(usuarioLoginDTO);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync(ApiRutas.Login.Autenticar, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+                var token = JsonSerializer.Deserialize<ApiRutas>(responseBody);
+                // Aquí puedes guardar el token en la sesión o en un lugar seguro
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
     }
 }

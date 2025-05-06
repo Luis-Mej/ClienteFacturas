@@ -87,6 +87,7 @@ namespace ClientFacturas
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Iniciar Sesión";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // linkRegistro
             // 
@@ -97,6 +98,7 @@ namespace ClientFacturas
             this.linkRegistro.TabIndex = 5;
             this.linkRegistro.TabStop = true;
             this.linkRegistro.Text = "Registrate";
+            this.linkRegistro.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRegistro_LinkClicked);
             // 
             // Login
             // 

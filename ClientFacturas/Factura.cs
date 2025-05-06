@@ -19,6 +19,8 @@ using Newtonsoft.Json;
 using ServiciosAPI.Servicios;
 using Sesion;
 using ServiciosAPI.Rutas;
+using Dto.FacturasDTOS;
+using System.Runtime.CompilerServices;
 
 namespace ClientFacturas
 {
@@ -134,7 +136,7 @@ namespace ClientFacturas
             txtTotal.Text = totalGeneral.ToString("0.00");
         }
 
-        private async void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnGuardar_Click(object sender, EventArgs e, FacturaDetDTO facturaDetDTO)
         {
             if (!ValidarCampos())
             {
@@ -153,41 +155,42 @@ namespace ClientFacturas
 
             guardarFactura.Detalles = productoCarrito;
 
-            FacturaServicio facturaServicio = new FacturaServicio();
-            var response = await facturaServicio.GuardarFactura(guardarFactura);
-            if (response == null)
-            {
-                MessageBox.Show("Error al guardar la factura");
-                return;
-            }
-
-            if (response.IsSuccessStatusCode)
-            {
-                FacturaVisualDTO facturaVisual = new FacturaVisualDTO();
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var responseObject = System.Text.Json.JsonSerializer.Deserialize<ResponseBase<FacturaVisualDTO>>(responseContent, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-
-                if (responseObject != null && responseObject.Data != null)
-                {
-                    facturaVisual = responseObject.Data;
-                }
-                else
-                {
-                    MessageBox.Show("Error al obtener la factura");
-                    return;
-                }
-                MessageBox.Show("Factura guardada exitosamente");
-                this.DialogResult = DialogResult.OK;
-                FacturaReport facturaReport = new FacturaReport(facturaVisual);
-                facturaReport.Show();
-            }
-            else
-            {
-                MessageBox.Show("Error al guardar la factura");
-            }
+            return;
+            FacturaServicio facturaServicio = new FacturaServicio(token: "");
+            ////var response = await facturaServicio.GuardarFacturaAsync(factura: );
+            //if (response == null)
+            //{
+            //    MessageBox.Show("Error al guardar la factura");
+            //    return;
+            //}
+            //
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    FacturaVisualDTO facturaVisual = new FacturaVisualDTO();
+            //    var responseContent = await response.Content.ReadAsStringAsync();
+            //    var responseObject = System.Text.Json.JsonSerializer.Deserialize<ResponseBase<FacturaVisualDTO>>(responseContent, new JsonSerializerOptions
+            //    {
+            //        PropertyNameCaseInsensitive = true
+            //    });
+            //
+            //    if (responseObject != null && responseObject.Data != null)
+            //    {
+            //        facturaVisual = responseObject.Data;
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Error al obtener la factura");
+            //        return;
+            //    }
+            //    MessageBox.Show("Factura guardada exitosamente");
+            //    this.DialogResult = DialogResult.OK;
+            //    FacturaReport facturaReport = new FacturaReport(facturaVisual);
+            //    facturaReport.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Error al guardar la factura");
+            //}
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -257,6 +260,11 @@ namespace ClientFacturas
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
