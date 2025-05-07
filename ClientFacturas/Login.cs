@@ -19,91 +19,35 @@ namespace ClientFacturas
 {
     public partial class Login : Form
     {
+        private readonly LoginServicios loginServicios;
         public Login()
         {
             InitializeComponent();
+            loginServicios = new LoginServicios();
         }
 
-        private int ObtenerIdUsuarioDesdeToken(string token)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-            var partes = token.Split('.');
-            if (partes.Length != 3) return 0;
-
-            var payload = partes[1];
-            var jsonBytes = Base64UrlDecode(payload);
-            var jsonString = Encoding.UTF8.GetString(jsonBytes);
-
-            var doc = JsonDocument.Parse(jsonString);
-            var root = doc.RootElement;
-
-            if (root.TryGetProperty("idUsuario", out var idUsuarioProp))
-            {
-                var idUsuarioStr = idUsuarioProp.GetString();
-                if (int.TryParse(idUsuarioStr, out var idUsuario))
-                    return idUsuario;
-            }
-            return 0;
-        }
-
-        private byte[] Base64UrlDecode(string input)
-        {
-            input = input.Replace('-', '+').Replace('_', '/');
-            switch (input.Length % 4)
-            {
-                case 2: input += "=="; break;
-                case 3: input += "="; break;
-                case 0: break;
-                default: throw new FormatException("Token inválido");
-            }
-            return Convert.FromBase64String(input);
-        }
-
-
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            UsuarioLoginDTO usuarioLoginDTO = new UsuarioLoginDTO
+            var usuarioLoginDTO = new UsuarioLoginDTO
             {
                 Nombre = txtLogin.Text,
                 Contrasenia = txtContrasena.Text
             };
 
-            LoginServicios client = new LoginServicios();
+            var loginExitoso = await loginServicios.LoginAsync(usuarioLoginDTO);
 
-            string Url = ApiRutas.Login.Autenticar;
+            if (!loginExitoso)
+            {
+                MessageBox.Show("Error al iniciar sesión");
+                return;
+            }
 
-            return;
+            MessageBox.Show("Login exitoso");
+            Hide();
 
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    var jsonResponse = await response.Content.ReadAsStringAsync();
-
-
-            //    var parsed = JsonSerializer.Deserialize<ResponseBase<string>>(jsonResponse, new JsonSerializerOptions
-            //    {
-            //        PropertyNameCaseInsensitive = true
-            //    });
-
-            //    SesionActual.Token = parsed.Data;
-            //    SesionActual.IdUsuario = ObtenerIdUsuarioDesdeToken(parsed.Data);
-
-
-            //    if (SesionActual.Token == null && SesionActual.IdUsuario == 0)
-            //    {
-            //        MessageBox.Show("Error al iniciar sesión");
-            //        return;
-            //    }
-            //    MessageBox.Show("Login exitoso");
-            //    this.Hide();
-
-            //    MenuPrincipal menuPrincipal = new MenuPrincipal();
-            //    menuPrincipal.FormClosed += (s, args) => this.Close();
-            //    menuPrincipal.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Error al iniciar sesión");
-            //}
+            var menuPrincipal = new MenuPrincipal();
+            menuPrincipal.FormClosed += (s, args) => Close();
+            menuPrincipal.Show();
         }
 
         private void linkRegistro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

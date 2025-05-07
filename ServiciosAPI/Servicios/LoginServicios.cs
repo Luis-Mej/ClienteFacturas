@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Dtos;
 using Dtos.UsuariosDTOS;
+using Sesion;
 
 namespace ServiciosAPI.Servicios
 {
@@ -19,29 +20,29 @@ namespace ServiciosAPI.Servicios
             _client = new HttpClient();
         }
 
-        public async Task<bool> LoginAsync(string nombre, string contrasenia)
+        public async Task<bool> LoginAsync(UsuarioLoginDTO usuarioLoginDTO)
         {
-            var usuarioLoginDTO = new UsuarioLoginDTO
-            {
-                Nombre = nombre,
-                Contrasenia = contrasenia
-            };
             var json = JsonSerializer.Serialize(usuarioLoginDTO);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
+
             var response = await _client.PostAsync("https://localhost:7037/api/Usuarios/Login", content);
-            if (response.IsSuccessStatusCode)
+
+            if (!response.IsSuccessStatusCode)
+                return false;
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var resultado = JsonSerializer.Deserialize<ResponseBase<string>>(jsonResponse, new JsonSerializerOptions
             {
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                var resultado = JsonSerializer.Deserialize<ResponseBase<UsuarioLoginDTO>>(jsonResponse, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-                if (resultado != null && resultado.Data != null)
-                {
-                    return true;
-                }
-            }
-            return false;
+                PropertyNameCaseInsensitive = true
+            });
+
+            if (resultado?.Data == null)
+                return false;
+
+            SesionActual.Token = resultado.Data;
+            SesionActual.IdUsuario = JwtHelper.ObtenerIdUsuarioDesdeToken(resultado.Data);
+
+            return SesionActual.Token != null && SesionActual.IdUsuario != 0;
         }
 
         public async Task<bool> RegistrarUsuarioAsync(UsuarioLoginDTO usuario)

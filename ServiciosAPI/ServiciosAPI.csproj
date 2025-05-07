@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JwtServicio\JwtServicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rutas\ApiRutas.cs" />
     <Compile Include="Servicios\FacturaServicio.cs" />
@@ -87,6 +88,10 @@
     <ProjectReference Include="..\FacturasDto\FacturasDto.csproj">
       <Project>{bd600ef0-4c12-460d-9d1f-510a98b4ae7c}</Project>
       <Name>FacturasDto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sesion\Sesion.csproj">
+      <Project>{CE1BA098-FE3F-459B-8FB4-DB321A3512A1}</Project>
+      <Name>Sesion</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
