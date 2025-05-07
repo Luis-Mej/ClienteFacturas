@@ -40,7 +40,7 @@ namespace ServiciosAPI.Servicios
                 return false;
 
             SesionActual.Token = resultado.Data;
-            SesionActual.IdUsuario = JwtHelper.ObtenerIdUsuarioDesdeToken(resultado.Data);
+            SesionActual.IdUsuario = JwtServicio.ObtenerIdUsuarioToken(resultado.Data);
 
             return SesionActual.Token != null && SesionActual.IdUsuario != 0;
         }
