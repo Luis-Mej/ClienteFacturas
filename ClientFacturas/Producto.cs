@@ -14,12 +14,14 @@ using System.Net.Http.Headers;
 using Dtos.FacturasDTOS;
 using System.Net.Http;
 using Sesion;
+using ServiciosAPI.Servicios;
 
 namespace ClientFacturas
 {
     public partial class Producto : Form
     {
         private List<ProductoDTO> listaProductos = new List<ProductoDTO>();
+        private readonly ProductoServicio productoServicio;
         public Producto()
         {
             InitializeComponent();
@@ -133,21 +135,20 @@ namespace ClientFacturas
 
                     try
                     {
-                        using (HttpClient client = new HttpClient())
+                        var productoDTO = new ProductoDTO
                         {
-                            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SesionActual.Token);
-                            var respuesta = await client.DeleteAsync($"https://localhost:7037/api/Productos/{productoElegido.Id}");
+                            Id = productoElegido.Id,
+                            Nombre = productoElegido.Nombre,
+                            Precio = productoElegido.Precio,
+                            Stock = productoElegido.Stock
+                        };
 
-                            if (respuesta.IsSuccessStatusCode)
-                            {
-                                MessageBox.Show("Producto eliminado exitosamente.");
-                                await CargarProductos();
-                            }
-                            else
-                            {
-                                string errorMsg = await respuesta.Content.ReadAsStringAsync();
-                                MessageBox.Show($"Error al eliminar el producto. Detalles: {errorMsg}");
-                            }
+                        var productoElimniado = await productoServicio.EliminarProductoAsync(productoDTO, id:1);
+
+                        if(!productoElimniado)
+                        {
+                            MessageBox.Show("Error al eliminar el producto.");
+                            return;
                         }
                     }
                     catch (Exception ex)

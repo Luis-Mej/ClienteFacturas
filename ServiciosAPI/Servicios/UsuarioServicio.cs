@@ -20,21 +20,39 @@ namespace ServiciosAPI.Servicios
             _client = new HttpClient();
         }
 
-        public async void Login(UsuarioLoginDTO usuarioLoginDTO)
+        public async Task<bool> RegistrarUsuarioAsync(UsuarioDTOs usuario)
         {
-            var json = JsonSerializer.Serialize(usuarioLoginDTO);
+            var json = JsonSerializer.Serialize(usuario);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync(ApiRutas.Login.Autenticar, content);
-            if (response.IsSuccessStatusCode)
+            var response = await _client.PostAsync(ApiRutas.UrlBase + "Usuarios", content);
+
+            if (!response.IsSuccessStatusCode)
+                return false;
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var resultado = JsonSerializer.Deserialize<ResponseBase<UsuarioLoginDTO>>(jsonResponse, new JsonSerializerOptions
             {
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var token = JsonSerializer.Deserialize<ApiRutas>(responseBody);
-                // Aquí puedes guardar el token en la sesión o en un lugar seguro
-            }
-            else
+                PropertyNameCaseInsensitive = true
+            });
+            if (resultado?.Data == null)
+                return false;
+            return resultado.Data != null;
+        }
+
+        public async Task<bool> ActualizarUsuarioAsync(UsuarioDTOs usuario)
+        {
+            var json = JsonSerializer.Serialize(usuario);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _client.PutAsync(ApiRutas.UrlBase + $"Usuarios/{usuario.Id}", content);
+            if (!response.IsSuccessStatusCode)
+                return false;
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var resultado = JsonSerializer.Deserialize<ResponseBase<UsuarioLoginDTO>>(jsonResponse, new JsonSerializerOptions
             {
-                throw new Exception();
-            }
+                PropertyNameCaseInsensitive = true
+            });
+            if (resultado?.Data == null)
+                return false;
+            return resultado.Data != null;
         }
     }
 }

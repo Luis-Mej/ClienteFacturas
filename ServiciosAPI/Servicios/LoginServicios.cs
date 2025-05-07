@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Dtos;
 using Dtos.UsuariosDTOS;
 using Sesion;
+using ServiciosAPI.JwtServicio;
+using ServiciosAPI.Rutas;
 
 namespace ServiciosAPI.Servicios
 {
@@ -25,7 +27,7 @@ namespace ServiciosAPI.Servicios
             var json = JsonSerializer.Serialize(usuarioLoginDTO);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await _client.PostAsync("https://localhost:7037/api/Usuarios/Login", content);
+            var response = await _client.PostAsync(ApiRutas.UrlBase + "Login", content);
 
             if (!response.IsSuccessStatusCode)
                 return false;
@@ -40,17 +42,9 @@ namespace ServiciosAPI.Servicios
                 return false;
 
             SesionActual.Token = resultado.Data;
-            SesionActual.IdUsuario = JwtServicio.ObtenerIdUsuarioToken(resultado.Data);
+            SesionActual.IdUsuario = JwtServicio.JwtServicio.ObtenerIdUsuarioToken(resultado.Data);
 
             return SesionActual.Token != null && SesionActual.IdUsuario != 0;
-        }
-
-        public async Task<bool> RegistrarUsuarioAsync(UsuarioLoginDTO usuario)
-        {
-            var json = JsonSerializer.Serialize(usuario);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync("https://localhost:7037/api/Usuarios", content);
-            return response.IsSuccessStatusCode;
         }
     }
 }

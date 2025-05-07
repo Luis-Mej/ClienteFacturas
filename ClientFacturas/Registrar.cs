@@ -11,12 +11,14 @@ using Dtos.UsuariosDTOS;
 using System.Text.Json;
 using Dtos;
 using System.Net.Http;
+using ServiciosAPI.Servicios;
 
 namespace ClientFacturas
 {
     public partial class Registrar : Form
     {
         private UsuarioDTOs EditarUsuario;
+        private readonly UsuarioServicio _usuarioServicio;
         public Registrar()
         {
             InitializeComponent();
@@ -58,27 +60,25 @@ namespace ClientFacturas
                     return;
                 }
 
-                UsuarioDTOs usuarioDTOs = new UsuarioDTOs(id, nombre, contrasenia);
-                HttpClient client = new HttpClient();
-                string Url = "https://localhost:7037/api/Usuarios";
-
-                var json = JsonSerializer.Serialize(usuarioDTOs);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Url, content);
-                if (response.IsSuccessStatusCode)
+                var UsuarioDTOs = new UsuarioDTOs
                 {
-                    var jsonResponse = response.Content.ReadAsStringAsync();
-                    var parsed = JsonSerializer.Deserialize<ResponseBase<string>>(await jsonResponse, new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
-                    MessageBox.Show("Usuario registrado exitosamente.");
+                    Nombre = txtNombre.Text,
+                    Contrasenia = txtContrasenia.Text,
+                };
+                var registroExitoso = await _usuarioServicio.RegistrarUsuarioAsync(UsuarioDTOs);
 
-                    Login login = new Login();
-                    login.FormClosed += (s, args) => this.Close();
-                    this.Hide();
-                    login.Show();
+                if (!registroExitoso)
+                {
+                    MessageBox.Show("Error al registrar el usuario");
+                    btnGuardar.Enabled = true;
+                    return;
                 }
+
+                MessageBox.Show("Usuario registrado exitosamente");
+                Login login = new Login();
+                login.FormClosed += (s, args) => this.Close();
+                this.Hide();
+                login.Show();
             }
             catch (Exception ex)
             {

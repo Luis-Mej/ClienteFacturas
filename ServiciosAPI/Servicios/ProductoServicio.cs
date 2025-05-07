@@ -49,7 +49,22 @@ namespace ServiciosAPI.Servicios
             return respuesta.IsSuccessStatusCode;
         }
 
-        public async Task<bool> EliminarProductoAsync(int id)
+        public async Task<ProductoDTO> EditarProductoAsync(int id)
+        {
+            var response = await _client.GetAsync($"{ApiRutas.Productos.Actualizar}/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var resultado = JsonSerializer.Deserialize<ResponseBase<ProductoDTO>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+                return resultado?.Data ?? new ProductoDTO();
+            }
+            return new ProductoDTO();
+        }
+
+        public async Task<bool> EliminarProductoAsync(ProductoDTO productoDTO, int id)
         {
             var response = await _client.DeleteAsync($"{ApiRutas.Productos.Eliminar}/{id}");
             return response.IsSuccessStatusCode;

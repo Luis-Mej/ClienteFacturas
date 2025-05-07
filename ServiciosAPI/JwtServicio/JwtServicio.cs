@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ServiciosAPI.JwtServicio
 {
-    public static class JwtServicio
+    public class JwtServicio
     {
         public static int ObtenerIdUsuarioToken(string token)
         {
