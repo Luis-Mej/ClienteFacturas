@@ -1,24 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Net.Http.Headers;
 using System.Windows.Forms;
 using Dtos.UsuariosDTOS;
+using ServiciosAPI.Servicios;
 using Sesion;
-using Dtos;
 
 namespace ClientFacturas
 {
     public partial class EditUsuario : Form
     {
         private UsuarioDTOs EditarUsuario;
+        private readonly UsuarioServicio usuarioServicio;
         public EditUsuario(UsuarioDTOs usuarioDTOs)
         {
             InitializeComponent();
@@ -47,36 +38,28 @@ namespace ClientFacturas
                 return;
             }
 
-            var actulizarDatos = new UsuarioDTOs();
-            actulizarDatos.Id = SesionActual.IdUsuario;
-            actulizarDatos.Nombre = txtUsuario.Text;
-            actulizarDatos.Contrasenia = txtContrasenaNueva.Text;
-
-            HttpClient client = new HttpClient();
-            string Url = $"https://localhost:7037/api/Usuarios/{SesionActual.IdUsuario}";
-
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SesionActual.Token);
-
-            var json = JsonSerializer.Serialize(actulizarDatos);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var respuesta= await client.PutAsync(Url, content);
-
-            if (respuesta.IsSuccessStatusCode)
+            var usuarioDTO = new UsuarioDTOs
             {
-                var respuestaContent = await respuesta.Content.ReadAsStringAsync();
-                var respuestaObj = JsonSerializer.Deserialize<ResponseBase<UsuarioDTOs>>(respuestaContent, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+                Id = SesionActual.IdUsuario,
+                Nombre = txtUsuario.Text,
+                Contrasenia = txtContrasenaNueva.Text,
+            };
 
-                MessageBox.Show("Usuario actualizado");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
+            //var actualizarDatos = new UsuarioDTOs();
+            //actulizarDatos.Id = SesionActual.IdUsuario;
+            //actulizarDatos.Nombre = txtUsuario.Text;
+            //actulizarDatos.Contrasenia = txtContrasenaNueva.Text;
+
+            var acualizacionExitosa = await usuarioServicio.ActualizarUsuarioAsync(usuarioDTO);
+
+            if (!acualizacionExitosa)
             {
-                MessageBox.Show("Error: No se pudo actualizar el usuario.");
+                MessageBox.Show("Error al actualizar el usuario");
+                return;
             }
+
+            MessageBox.Show("Datos actualizados");
+            Hide();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
