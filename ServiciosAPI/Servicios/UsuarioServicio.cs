@@ -46,7 +46,7 @@ namespace ServiciosAPI.Servicios
             if (!response.IsSuccessStatusCode)
                 return false;
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            var resultado = JsonSerializer.Deserialize<ResponseBase<UsuarioLoginDTO>>(jsonResponse, new JsonSerializerOptions
+            var resultado = JsonSerializer.Deserialize<ResponseBase<UsuarioDTOs>>(jsonResponse, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             });

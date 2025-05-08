@@ -50,9 +50,9 @@ namespace ClientFacturas
             //actulizarDatos.Nombre = txtUsuario.Text;
             //actulizarDatos.Contrasenia = txtContrasenaNueva.Text;
 
-            var acualizacionExitosa = await usuarioServicio.ActualizarUsuarioAsync(usuarioDTO);
+            var actualizacionExitosa = await usuarioServicio.ActualizarUsuarioAsync(usuarioDTO);
 
-            if (!acualizacionExitosa)
+            if (!actualizacionExitosa)
             {
                 MessageBox.Show("Error al actualizar el usuario");
                 return;
