@@ -39,57 +39,44 @@ namespace ClientFacturas
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SesionActual.Token);
-                var respuesta = await client.GetAsync("https://localhost:7037/api/Productos");
+                var respuesta = await productoServicio.ObtenerProductosAsync();
 
-                if (respuesta.IsSuccessStatusCode)
+                if (respuesta != null)
                 {
-                    var json = await respuesta.Content.ReadAsStringAsync();
-                    var resultado = JsonSerializer.Deserialize<ResponseBase<List<ProductoDTO>>>(json, new JsonSerializerOptions
+                    listaProductos = respuesta;
+
+                    dgvProductos.Columns.Clear();
+
+                    dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        PropertyNameCaseInsensitive = true
+                        DataPropertyName = "Nombre",
+                        HeaderText = "Nombre"
                     });
 
-                    if (resultado != null && resultado.Data != null)
+                    dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        listaProductos = resultado.Data;
+                        DataPropertyName = "Precio",
+                        HeaderText = "Precio"
+                    });
 
-                        dgvProductos.Columns.Clear();
-
-                        dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "Nombre",
-                            HeaderText = "Nombre"
-                        });
-
-                        dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "Precio",
-                            HeaderText = "Precio"
-                        });
-
-                        dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "Stock",
-                            HeaderText = "Stock"
-                        });
-
-                        dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            DataPropertyName = "Id",
-                            HeaderText = "Id",
-                            Visible = false
-                        });
-
-                        dgvProductos.DataSource = new BindingList<ProductoDTO>(listaProductos);
-                    }
-                    else
+                    dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        MessageBox.Show("No se pudo obtener la lista de productos.");
-                    }
+                        DataPropertyName = "Stock",
+                        HeaderText = "Stock"
+                    });
+
+                    dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        DataPropertyName = "Id",
+                        HeaderText = "Id",
+                        Visible = false
+                    });
+
+                    dgvProductos.DataSource = new BindingList<ProductoDTO>(listaProductos);
                 }
                 else
                 {
-                    MessageBox.Show("Error al cargar productos desde la API.");
+                    MessageBox.Show("No se pudo obtener la lista de productos.");
                 }
             }
         }

@@ -17,7 +17,7 @@ namespace ClientFacturas
 {
     public partial class Registrar : Form
     {
-        private UsuarioDTOs EditarUsuario;
+        private UsuarioDTOs usuarioDTOs;
         private readonly UsuarioServicio _usuarioServicio;
         public Registrar()
         {
@@ -42,7 +42,7 @@ namespace ClientFacturas
             btnGuardar.Enabled = false;
             try
             {
-                int id = EditarUsuario?.Id ?? 0;
+                int id = usuarioDTOs?.Id ?? 0;
                 string nombre = txtNombre.Text.Trim();
                 string contrasenia = txtContrasenia.Text.Trim();
                 string contraseniaConfirmar = txtConfirContrasenia.Text.Trim();

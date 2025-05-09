@@ -41,10 +41,19 @@ namespace ServiciosAPI.Servicios
         {
             var json = JsonSerializer.Serialize(factura);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage respuesta = factura.IdFactura == 0
-                ? await _client.PostAsync(ApiRutas.Facturas.Crear, content)
-                : await _client.GetAsync(ApiRutas.Facturas.ObtenerTodos);
-            return respuesta.IsSuccessStatusCode;
+
+            var response = await _client.PostAsync(ApiRutas.UrlBase +"Facturas", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var resultado = JsonSerializer.Deserialize<ResponseBase<FacturasDTOs>>(jsonResponse, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+                return resultado?.Data != null;
+            }
+            return false;
         }
     }
 }
