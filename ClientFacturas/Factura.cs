@@ -266,5 +266,29 @@ namespace ClientFacturas
         {
 
         }
+
+        private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbTipoFactura.Enabled = true;
+
+            if(cbTipoFactura is ComboBox comboBox)
+            {
+                if (comboBox.SelectedItem is string selectedItem)
+                {
+                    if (selectedItem == "Factura")
+                    {
+                        txtSubTotal.Enabled = true;
+                        txtIva.Enabled = true;
+                        txtTotal.Enabled = true;
+                    }
+                    else
+                    {
+                        txtSubTotal.Enabled = false;
+                        txtIva.Enabled = false;
+                        txtTotal.Enabled = false;
+                    }
+                }
+            }
+        }
     }
 }

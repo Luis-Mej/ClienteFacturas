@@ -38,6 +38,7 @@ namespace ClientFacturas
                 return;
             }
 
+
             var usuarioDTO = new UsuarioDTOs
             {
                 Id = SesionActual.IdUsuario,

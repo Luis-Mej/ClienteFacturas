@@ -36,42 +36,13 @@ namespace ClientFacturas
 
         private async Task CargarProductos()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", SesionActual.Token);
-                var respuesta = await productoServicio.ObtenerProductosAsync();
+                listaProductos = await productoServicio.ObtenerProductosAsync() ?? new List<ProductoDTO>();
 
-                if (respuesta != null)
+                if (listaProductos.Any())
                 {
-                    listaProductos = respuesta;
-
-                    dgvProductos.Columns.Clear();
-
-                    dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "Nombre",
-                        HeaderText = "Nombre"
-                    });
-
-                    dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "Precio",
-                        HeaderText = "Precio"
-                    });
-
-                    dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "Stock",
-                        HeaderText = "Stock"
-                    });
-
-                    dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "Id",
-                        HeaderText = "Id",
-                        Visible = false
-                    });
-
+                    ConfigurarColumnasDataGridView();
                     dgvProductos.DataSource = new BindingList<ProductoDTO>(listaProductos);
                 }
                 else
@@ -79,7 +50,42 @@ namespace ClientFacturas
                     MessageBox.Show("No se pudo obtener la lista de productos.");
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar productos: {ex.Message}");
+            }
         }
+
+        private void ConfigurarColumnasDataGridView()
+        {
+            dgvProductos.Columns.Clear();
+
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Nombre",
+                HeaderText = "Nombre"
+            });
+
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Precio",
+                HeaderText = "Precio"
+            });
+
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Stock",
+                HeaderText = "Stock"
+            });
+
+            dgvProductos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Id",
+                HeaderText = "Id",
+                Visible = false
+            });
+        }
+
 
         private void txtBuscarProducto_TextChanged(object sender, EventArgs e)
         {

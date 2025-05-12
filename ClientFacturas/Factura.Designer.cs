@@ -54,6 +54,8 @@ namespace ClientFacturas
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvDetalles = new System.Windows.Forms.DataGridView();
+            this.tipoFactura = new System.Windows.Forms.Label();
+            this.cbTipoFactura = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -106,6 +108,8 @@ namespace ClientFacturas
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cbTipoFactura);
+            this.panel2.Controls.Add(this.tipoFactura);
             this.panel2.Controls.Add(this.txtTotal);
             this.panel2.Controls.Add(this.txtIva);
             this.panel2.Controls.Add(this.txtSubTotal);
@@ -125,7 +129,7 @@ namespace ClientFacturas
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(453, 143);
+            this.panel2.Size = new System.Drawing.Size(453, 188);
             this.panel2.TabIndex = 1;
             // 
             // txtTotal
@@ -188,7 +192,7 @@ namespace ClientFacturas
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(89, 107);
+            this.txtEmail.Location = new System.Drawing.Point(89, 148);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(86, 20);
             this.txtEmail.TabIndex = 8;
@@ -196,7 +200,7 @@ namespace ClientFacturas
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(89, 77);
+            this.txtTelefono.Location = new System.Drawing.Point(89, 118);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(86, 20);
             this.txtTelefono.TabIndex = 7;
@@ -205,7 +209,7 @@ namespace ClientFacturas
             // 
             // txtIdentificacion
             // 
-            this.txtIdentificacion.Location = new System.Drawing.Point(89, 49);
+            this.txtIdentificacion.Location = new System.Drawing.Point(89, 90);
             this.txtIdentificacion.Name = "txtIdentificacion";
             this.txtIdentificacion.Size = new System.Drawing.Size(86, 20);
             this.txtIdentificacion.TabIndex = 6;
@@ -214,7 +218,7 @@ namespace ClientFacturas
             // 
             // txtCliente
             // 
-            this.txtCliente.Location = new System.Drawing.Point(89, 16);
+            this.txtCliente.Location = new System.Drawing.Point(89, 57);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(86, 20);
             this.txtCliente.TabIndex = 5;
@@ -232,7 +236,7 @@ namespace ClientFacturas
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 114);
+            this.label4.Location = new System.Drawing.Point(11, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 3;
@@ -241,7 +245,7 @@ namespace ClientFacturas
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 80);
+            this.label3.Location = new System.Drawing.Point(11, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 2;
@@ -250,7 +254,7 @@ namespace ClientFacturas
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 49);
+            this.label2.Location = new System.Drawing.Point(11, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 1;
@@ -259,7 +263,7 @@ namespace ClientFacturas
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 21);
+            this.label1.Location = new System.Drawing.Point(11, 62);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(45, 13);
@@ -271,9 +275,9 @@ namespace ClientFacturas
             // 
             this.panel3.Controls.Add(this.dgvDetalles);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 143);
+            this.panel3.Location = new System.Drawing.Point(0, 188);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(453, 280);
+            this.panel3.Size = new System.Drawing.Size(453, 235);
             this.panel3.TabIndex = 2;
             // 
             // dgvDetalles
@@ -282,8 +286,31 @@ namespace ClientFacturas
             this.dgvDetalles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDetalles.Location = new System.Drawing.Point(0, 0);
             this.dgvDetalles.Name = "dgvDetalles";
-            this.dgvDetalles.Size = new System.Drawing.Size(453, 280);
+            this.dgvDetalles.Size = new System.Drawing.Size(453, 235);
             this.dgvDetalles.TabIndex = 0;
+            // 
+            // tipoFactura
+            // 
+            this.tipoFactura.AutoSize = true;
+            this.tipoFactura.Location = new System.Drawing.Point(3, 28);
+            this.tipoFactura.Name = "tipoFactura";
+            this.tipoFactura.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tipoFactura.Size = new System.Drawing.Size(85, 13);
+            this.tipoFactura.TabIndex = 17;
+            this.tipoFactura.Text = "Tipo de Factura:";
+            this.tipoFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cbTipoFactura
+            // 
+            this.cbTipoFactura.FormattingEnabled = true;
+            this.cbTipoFactura.Items.AddRange(new object[] {
+            "Datos",
+            "Consumidor Final"});
+            this.cbTipoFactura.Location = new System.Drawing.Point(89, 25);
+            this.cbTipoFactura.Name = "cbTipoFactura";
+            this.cbTipoFactura.Size = new System.Drawing.Size(86, 21);
+            this.cbTipoFactura.TabIndex = 18;
+            this.cbTipoFactura.SelectedIndexChanged += new System.EventHandler(this.cbTipoFactura_SelectedIndexChanged);
             // 
             // Factura
             // 
@@ -331,5 +358,7 @@ namespace ClientFacturas
         private TextBox txtIva;
         private TextBox txtSubTotal;
         private Button btnVolver;
+        private Label tipoFactura;
+        private ComboBox cbTipoFactura;
     }
 }
