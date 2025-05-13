@@ -269,25 +269,28 @@ namespace ClientFacturas
 
         private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbTipoFactura.Enabled = true;
-
-            if(cbTipoFactura is ComboBox comboBox)
+            if (cbTipoFactura.SelectedItem is string selectedItem)
             {
-                if (comboBox.SelectedItem is string selectedItem)
+                if (selectedItem == "Datos")
                 {
-                    if (selectedItem == "Factura")
-                    {
-                        txtSubTotal.Enabled = true;
-                        txtIva.Enabled = true;
-                        txtTotal.Enabled = true;
-                    }
-                    else
-                    {
-                        txtSubTotal.Enabled = false;
-                        txtIva.Enabled = false;
-                        txtTotal.Enabled = false;
-                    }
+                    txtCliente.Enabled = true;
+                    txtIdentificacion.Enabled = true;
+                    txtTelefono.Enabled = true;
+                    txtEmail.Enabled = true;
                 }
+                else if (selectedItem == "Consumidor Final")
+                {
+                    txtCliente.Enabled = false;
+                    txtIdentificacion.Enabled = false;
+                    txtTelefono.Enabled = false;
+                    txtEmail.Enabled = false;
+
+                    txtCliente.Text = "";
+                    txtIdentificacion.Text = "";
+                    txtTelefono.Text = "";
+                    txtEmail.Text = "";
+                }
+                cbTipoFactura.Enabled = false;
             }
         }
     }
