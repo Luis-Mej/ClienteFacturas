@@ -277,6 +277,11 @@ namespace ClientFacturas
                     txtIdentificacion.Enabled = true;
                     txtTelefono.Enabled = true;
                     txtEmail.Enabled = true;
+
+                    txtCliente.Text = "";
+                    txtIdentificacion.Text = "";
+                    txtTelefono.Text = "";
+                    txtEmail.Text = "";
                 }
                 else if (selectedItem == "Consumidor Final")
                 {
@@ -285,12 +290,12 @@ namespace ClientFacturas
                     txtTelefono.Enabled = false;
                     txtEmail.Enabled = false;
 
-                    txtCliente.Text = "";
-                    txtIdentificacion.Text = "";
-                    txtTelefono.Text = "";
-                    txtEmail.Text = "";
+                    txtCliente.Text = "AAAAAAAAAAAAAAA";
+                    txtIdentificacion.Text = "0999999999";
+                    txtTelefono.Text = "0999999999";
+                    txtEmail.Text = "000000000000000";
                 }
-                cbTipoFactura.Enabled = false;
+                cbTipoFactura.Enabled = true;
             }
         }
     }
