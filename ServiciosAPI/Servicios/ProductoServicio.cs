@@ -64,7 +64,7 @@ namespace ServiciosAPI.Servicios
             return new ProductoDTO();
         }
 
-        public async Task<bool> EliminarProductoAsync(ProductoDTO productoDTO, int id)
+        public async Task<bool> EliminarProductoAsync(int id)
         {
             var response = await _client.DeleteAsync($"{ApiRutas.Productos.Eliminar}/{id}");
             return response.IsSuccessStatusCode;

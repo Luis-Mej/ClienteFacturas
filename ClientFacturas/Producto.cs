@@ -26,6 +26,10 @@ namespace ClientFacturas
         {
             InitializeComponent();
             dgvProductos.AutoGenerateColumns = false;
+
+            string token = SesionActual.Token.Trim();
+            productoServicio = new ProductoServicio(token);
+
             Load += Producto_Load;
         }
 
@@ -128,21 +132,15 @@ namespace ClientFacturas
 
                     try
                     {
-                        var productoDTO = new ProductoDTO
-                        {
-                            Id = productoElegido.Id,
-                            Nombre = productoElegido.Nombre,
-                            Precio = productoElegido.Precio,
-                            Stock = productoElegido.Stock
-                        };
+                        var productoEliminado = await productoServicio.EliminarProductoAsync(productoElegido.Id);
 
-                        var productoElimniado = await productoServicio.EliminarProductoAsync(productoDTO, id:1);
-
-                        if(!productoElimniado)
+                        if (!productoEliminado)
                         {
                             MessageBox.Show("Error al eliminar el producto.");
                             return;
                         }
+
+                        await CargarProductos();
                     }
                     catch (Exception ex)
                     {
